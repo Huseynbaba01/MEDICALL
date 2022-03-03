@@ -38,7 +38,7 @@
                 android:text="@string/apps_purpose"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -56,7 +56,7 @@
         android:text="Təcili yardımı çağırın"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:cornerRadius="6dp"
         app:elevation="5dp" />
 
@@ -73,7 +73,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:cornerRadius="6dp"
         app:elevation="5dp" />
 

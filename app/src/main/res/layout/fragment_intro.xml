@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.IntroFragment"
     android:background="@color/main_red"
-    android:padding="80dp">
+    android:orientation="vertical"
+    android:padding="80dp"
+    tools:context=".ui.fragment.IntroFragment">
 
-    <ImageView
-        android:id="@+id/location_logo"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/logo"
-        android:layout_alignStart="@+id/logo"
-        android:layout_alignEnd="@id/logo"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp"
-        android:src="@drawable/location_logo2" />
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-    <ImageView
-        android:layout_centerInParent="true"
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logo3" />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/logo_intro" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4">
+
+    </RelativeLayout>
 
 
-
-
-
-</RelativeLayout>
+</LinearLayout>
