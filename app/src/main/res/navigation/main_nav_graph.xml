@@ -11,12 +11,12 @@
         android:label="fragment_intro"
         tools:layout="@layout/fragment_intro" >
         <action
-            android:id="@+id/action_introFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
+            android:id="@+id/action_introFragment_to_selectUserTypeFragment"
+            app:destination="@id/selectUserTypeFragment" />
     </fragment>
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.creativeprojects.medicall.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/selectUserTypeFragment"
+        android:name="com.creativeprojects.medicall.ui.fragment.SelectUserTypeFragment"
+        android:label="fragment_select_user_type"
+        tools:layout="@layout/fragment_select_user_type" />
 </navigation>

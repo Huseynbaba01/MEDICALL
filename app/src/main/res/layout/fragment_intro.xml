@@ -5,14 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.IntroFragment"
-    android:background="@color/main_red">
-
+    android:background="@color/main_red"
+    android:padding="80dp">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="150dp"
+        android:id="@+id/location_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/logo"
+        android:layout_alignStart="@+id/logo"
+        android:layout_alignEnd="@id/logo"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:src="@drawable/location_logo2" />
+
+    <ImageView
         android:layout_centerInParent="true"
-        android:src="@drawable/medicall_logo"/>
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo3" />
+
 
 
 
