@@ -12,7 +12,10 @@
         tools:layout="@layout/fragment_intro" >
         <action
             android:id="@+id/action_introFragment_to_selectUserTypeFragment"
-            app:destination="@id/selectUserTypeFragment" />
+            app:destination="@id/selectUserTypeFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/selectUserTypeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/selectUserTypeFragment"

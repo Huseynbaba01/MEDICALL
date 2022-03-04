@@ -1,7 +1,8 @@
-package com.creativeprojects.medicall
+package com.creativeprojects.medicall.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
