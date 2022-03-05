@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_nav_graph">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/addressSelectionFragment">
+    <fragment
+        android:id="@+id/addressSelectionFragment"
+        android:name="com.creativeprojects.medicall.ui.fragment.AddressSelectionFragment"
+        android:label="fragment_address_selection"
+        tools:layout="@layout/fragment_address_selection" />
 </navigation>
