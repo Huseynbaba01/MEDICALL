@@ -4,14 +4,14 @@ import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Paint
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
 
 object ImageHelper {
-    public fun textAsBitmap(text: String, textSize: Float, textColor: Int): Bitmap {
+    //TODO Can be used to convert any text to the bitmap (maybe for the Google Map)
+    /*fun textAsBitmap(text: String, textSize: Float, textColor: Int): Bitmap {
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
         paint.textSize = textSize
         paint.color = textColor
@@ -28,7 +28,7 @@ object ImageHelper {
         }
         return image
     }
-
+*/
     fun getBitmapDescriptor(
         context: Context?,
         drawableId: Int,
