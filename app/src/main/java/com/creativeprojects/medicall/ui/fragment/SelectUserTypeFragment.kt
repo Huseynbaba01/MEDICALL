@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.creativeprojects.medicall.databinding.FragmentSelectUserTypeBinding
 
 
@@ -17,7 +18,7 @@ class SelectUserTypeFragment : Fragment() {
     ): View {
         binding = FragmentSelectUserTypeBinding.inflate(inflater)
         binding.cvCallAmbulance.setOnClickListener {
-
+            findNavController().navigate(SelectUserTypeFragmentDirections.actionSelectUserTypeFragmentToDiseasesFragment())
         }
         return binding.root
 
