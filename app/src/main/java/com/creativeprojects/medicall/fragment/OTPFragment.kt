@@ -10,13 +10,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.TextView
 import com.creativeprojects.medicall.DataHolder.OrderOfEditText
+import com.creativeprojects.medicall.HelperClasses.DeclareEdittextReferToNumber
 import com.creativeprojects.medicall.HelperClasses.GenericTextWatcher
 import com.creativeprojects.medicall.HelperClasses.ReturnBackOTP
 import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.FragmentOTPBinding
 import com.creativeprojects.medicall.model.event.ConfirmVerification
+import com.creativeprojects.medicall.model.event.OTPBindingSentEvent
 import com.creativeprojects.medicall.model.event.VerificationCodeSentEvent
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -28,6 +31,7 @@ class OTPFragment : BaseFragment() {
     val returnBack=ReturnBackOTP()
     lateinit var verificicationCode : String
     lateinit var oderOfEdittext:OrderOfEditText
+    val declareEdittextReferToNumber = DeclareEdittextReferToNumber()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +40,9 @@ class OTPFragment : BaseFragment() {
     ): View? {
         binding= FragmentOTPBinding.inflate(inflater)
         passFocus();
+
+        //To send binding to the DeclareEditTextReferToPhoneNumber
+        EventBus.getDefault().postSticky(OTPBindingSentEvent(binding))
 
         oderOfEdittext= OrderOfEditText()
 
@@ -46,25 +53,14 @@ class OTPFragment : BaseFragment() {
                     EventBus.getDefault().postSticky(ConfirmVerification())
                 }
             }else{
-                focusOn(oderOfEdittext.getOrder())
+                 var editText:EditText=declareEdittextReferToNumber.declareEditText(oderOfEdittext.getOrder())
+                editText.requestFocus()
             }
 
 
         })
 
         return binding.root
-    }
-
-    private fun focusOn(order: Int?) {
-        when(order){
-            1 -> binding.firstEt.requestFocus()
-            2 -> binding.secondEt.requestFocus()
-            3 -> binding.thirdEt.requestFocus()
-            4 -> binding.fourthEt.requestFocus()
-            5 -> binding.fifthEt.requestFocus()
-            6 -> binding.sixthEt.requestFocus()
-
-        }
     }
 
 

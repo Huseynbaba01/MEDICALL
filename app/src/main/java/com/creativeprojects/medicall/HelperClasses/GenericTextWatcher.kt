@@ -9,6 +9,7 @@ import com.google.android.material.textfield.TextInputEditText
 class GenericTextWatcher(etNext : TextInputEditText) : TextWatcher {
     val etNext=etNext
     var orderOfEditText = OrderOfEditText()
+    val declareEdittextReferToNumber=DeclareEdittextReferToNumber()
 
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
         TODO("Not yet implemented")
@@ -18,10 +19,21 @@ class GenericTextWatcher(etNext : TextInputEditText) : TextWatcher {
     }
 
     override fun afterTextChanged(p0: Editable?) {
-        if(p0.toString().length==1){
-            etNext.requestFocus()
-            orderOfEditText.increaseOrder()
+        var recentEt=declareEdittextReferToNumber.declareEditText(orderOfEditText.getOrder())
+
+        if(recentEt==p0){
+            if(p0.toString().length==1){
+                etNext.requestFocus()
+                orderOfEditText.increaseOrder()
+            }
+        }else{
+            recentEt.addTextChangedListener(GenericTextWatcher(declareEdittextReferToNumber.declareEditText(
+                orderOfEditText.getOrder()?.plus(1)
+            )))
         }
+
     }
+
+
 
 }
