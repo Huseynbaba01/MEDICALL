@@ -39,12 +39,12 @@
                             >
 
                             <item
-                                android:color="#E62D2D"
+                                android:color="#CE2029"
                                 android:offset="0.156"
                                 />
 
                             <item
-                                android:color="#ADE62D2D"
+                                android:color="#ADCE2029"
                                 android:offset="0.761"
                                 />
 
