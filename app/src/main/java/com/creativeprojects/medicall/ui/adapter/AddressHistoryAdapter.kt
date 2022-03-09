@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.creativeprojects.medicall.AddressHistoryItem
+import com.creativeprojects.medicall.model.AddressHistoryItem
 import com.creativeprojects.medicall.R
+import com.creativeprojects.medicall.event.HistoryItemDeletedEvent
 import com.creativeprojects.medicall.ui.holder.AddressHistoryViewHolder
+import org.greenrobot.eventbus.EventBus
 
 class AddressHistoryAdapter(var items : List<AddressHistoryItem>) : RecyclerView.Adapter<AddressHistoryViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressHistoryViewHolder {
@@ -16,18 +18,22 @@ class AddressHistoryAdapter(var items : List<AddressHistoryItem>) : RecyclerView
     override fun onBindViewHolder(holder: AddressHistoryViewHolder, position: Int) {
 //        holder.title.text = set location title
 //        holder.subtitle.text = set location subtitle
-        holder.title.text = "Həzi Aslanov"
-        holder.subtitle.text = "Bakı, Azərbaycan"
+        holder.title.text = items[position].title
+        holder.subtitle.text = items[position].subtitle
+
 
         holder.remove.setOnClickListener {
-            //TODO Clear the place from the list
-            Toast.makeText(holder.remove.context, "The item in the line $position should be deleted", Toast.LENGTH_SHORT).show()
+            EventBus.getDefault().postSticky(HistoryItemDeletedEvent(items[position]))
         }
     }
 
     override fun getItemCount(): Int {
-//        return items.size
-        return 3 //TODO Remove, it is just for test
+        return items.size
+    }
+
+    fun updateDataSet(newItems : List<AddressHistoryItem>){
+        this.items = newItems
+        notifyDataSetChanged()
     }
 
 

@@ -73,11 +73,13 @@
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/history_items_card"
         app:cardElevation="5dp"
         android:layout_marginTop="5dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="5dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/search_card"
         app:layout_constraintTop_toBottomOf="@+id/search_card"
         app:layout_constraintStart_toStartOf="@id/search_card"
@@ -87,6 +89,7 @@
         android:id="@+id/history_items"
         tools:listitem="@layout/listitem_address_history"
         tools:itemCount="3"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -140,7 +143,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/search_doctor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardElevation="5dp"
+        app:cardElevation="4dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         app:cardCornerRadius="7dp"

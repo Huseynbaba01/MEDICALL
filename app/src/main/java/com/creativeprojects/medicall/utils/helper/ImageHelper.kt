@@ -1,4 +1,4 @@
-package com.creativeprojects.medicall.helper
+package com.creativeprojects.medicall.utils.helper
 
 import android.content.Context
 import android.content.res.Resources
