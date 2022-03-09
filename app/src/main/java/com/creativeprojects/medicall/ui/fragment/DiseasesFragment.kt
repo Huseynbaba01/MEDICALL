@@ -1,11 +1,11 @@
 package com.creativeprojects.medicall.ui.fragment
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.FragmentDiseasesBinding
 
@@ -21,7 +21,7 @@ class DiseasesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         corona = true
         fever = true
         carCrash = true
@@ -29,6 +29,7 @@ class DiseasesFragment : Fragment() {
         heartStroke = true
         bleeding = true
         binding = FragmentDiseasesBinding.inflate(inflater)
+
         binding.corona?.setOnClickListener {
             corona = if(corona as Boolean) {
                 binding.corona!!.setBackgroundResource(R.drawable.diseases_clicked_background)
@@ -91,6 +92,13 @@ class DiseasesFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.arrowLeft!!.setOnClickListener {
+            findNavController().navigate(DiseasesFragmentDirections.actionDiseasesFragmentToSelectUserTypeFragment())
+        }
+        super.onViewCreated(view, savedInstanceState)
     }
 
 

@@ -304,6 +304,7 @@
                 android:backgroundTint="@color/main_red"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="Səbəbi daxil edin"
+                android:gravity="start"
                 android:textColor="@color/text_black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>

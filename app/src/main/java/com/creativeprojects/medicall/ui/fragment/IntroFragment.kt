@@ -16,7 +16,7 @@ class IntroFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentIntroBinding.inflate(inflater, container, false)
         Handler(Looper.getMainLooper()).postDelayed(
             {
