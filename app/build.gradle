@@ -3,6 +3,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id "androidx.navigation.safeargs.kotlin"
+
 }
 
 android {
@@ -24,8 +26,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    viewBinding{
-        enabled = true
+
+
+    viewBinding {
+        enabled  = true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

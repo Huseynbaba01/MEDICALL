@@ -3,10 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/addressSelectionFragment">
+    app:startDestination="@id/introFragment">
+
     <fragment
-        android:id="@+id/addressSelectionFragment"
-        android:name="com.creativeprojects.medicall.ui.fragment.AddressSelectionFragment"
-        android:label="fragment_address_selection"
-        tools:layout="@layout/fragment_address_selection" />
+        android:id="@+id/introFragment"
+        android:name="com.creativeprojects.medicall.ui.fragment.IntroFragment"
+        android:label="fragment_intro"
+        tools:layout="@layout/fragment_intro" >
+        <action
+            android:id="@+id/action_introFragment_to_selectUserTypeFragment"
+            app:destination="@id/selectUserTypeFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/selectUserTypeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectUserTypeFragment"
+        android:name="com.creativeprojects.medicall.ui.fragment.SelectUserTypeFragment"
+        android:label="fragment_select_user_type"
+        tools:layout="@layout/fragment_select_user_type" >
+        <action
+            android:id="@+id/action_selectUserTypeFragment_to_diseasesFragment"
+            app:destination="@id/diseasesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/diseasesFragment"
+        android:name="com.creativeprojects.medicall.ui.fragment.DiseasesFragment"
+        android:label="fragment_diseases"
+        tools:layout="@layout/fragment_diseases" >
+        <action
+            android:id="@+id/action_diseasesFragment_to_selectUserTypeFragment"
+            app:destination="@id/selectUserTypeFragment" />
+    </fragment>
 </navigation>
