@@ -4,10 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:viewBindingIgnore="false"
     tools:context=".fragment.ContinueWithPhoneNumberFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     
 
@@ -21,6 +19,7 @@
             android:layout_height="wrap_content">
 
             <ImageButton
+                android:id="@+id/phoneNumber_returnbackImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/backicon" />
@@ -53,8 +52,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:gravity="center"
                     android:text="Müraciətinizi tamamlamaq üçün telefon nömrənizi qeyd edin"
                     android:textColor="#4F4949"
@@ -101,6 +100,7 @@
                                 android:layout_centerInParent="true"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="20dp"
+                                android:clickable="false"
                                 android:layout_marginBottom="5dp"
                                 android:background="#3E3C3C" />
                         </RelativeLayout>
@@ -118,8 +118,10 @@
                                 android:layout_marginBottom="10dp"
                                 android:background="@null"
                                 android:paddingStart="5dp"
-                                android:inputType="none"
+                                android:focusable="false"
+                                android:paddingRight="5dp"
                                 android:text="(+994)"
+                                android:clickable="false"
                                 android:textSize="16sp" />
 
                             <EditText
@@ -130,6 +132,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:background="@null"
                                 android:clickable="true"
+                                android:screenReaderFocusable="true"
                                 android:focusable="true"
                                 android:inputType="number"
                                 android:text=""
@@ -139,30 +142,31 @@
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
+
+
+                <ProgressBar
+                    android:id="@+id/pBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_centerInParent="true" />
             </RelativeLayout>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="6px"
-            >
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#E52D2D"
-                android:layout_gravity="center_horizontal"
-                android:text="Növbəti"
-                android:textAllCaps="false"
-                android:textSize="20sp"
-                android:id="@+id/nextButton"
-                android:padding="10dp"
-                />
-        </androidx.cardview.widget.CardView>
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cornerRadius="5dp"
+                    android:backgroundTint="#E52D2D"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Növbəti"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:id="@+id/nextButton"
+                    android:padding="10dp"
+                    />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

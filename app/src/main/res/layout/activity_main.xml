@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_host_fragment"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:navGraph="@navigation/main_nav_graph"
     tools:context=".MainActivity"
-    android:id="@+id/fragmentPhoneNumber">
-    <androidx.fragment.app.FragmentContainerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/nav_host_fragment_container"
-        app:navGraph="@navigation/main_nav_graph"
-        app:defaultNavHost="true"
-        />
-</FrameLayout>
+    app:defaultNavHost="true" />
