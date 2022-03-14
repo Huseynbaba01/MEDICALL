@@ -5,7 +5,10 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.pm.PackageManager
 import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getSystemService
 
 
 object CommonHelper {
@@ -36,4 +39,16 @@ object CommonHelper {
         }
         return null
     }
+
+    fun closeKeyboard(view: View?) {
+        if (view != null) {
+            val manager: InputMethodManager? = view.context.applicationContext.getSystemService(
+                Context.INPUT_METHOD_SERVICE
+            ) as InputMethodManager?
+            manager?.hideSoftInputFromWindow(
+                    view.windowToken, 0
+                )
+        }
+    }
+
 }

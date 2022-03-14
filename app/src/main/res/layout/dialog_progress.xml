@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginEnd="40dp"
+    android:backgroundTint="#CE2029"
+    android:layout_marginStart="40dp"
+    android:layout_gravity="center"
+    app:cardElevation="100dp"
+    android:layout_height="wrap_content"
+    tools:context="com.creativeprojects.medicall.ui.dialog.ProgressDialog">
+    <RelativeLayout
+        android:padding="30dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/progress_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center_horizontal"
+            android:text="This is a progress"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:padding="0dp"
+        app:lottie_rawRes="@raw/waves_animation"
+        android:layout_below="@id/progress_text"
+        />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
