@@ -30,6 +30,7 @@ class DiseasesFragment : Fragment() {
         bleeding = true
         binding = FragmentDiseasesBinding.inflate(inflater)
 
+        // making  diseases change background when clicked
         binding.corona?.setOnClickListener {
             corona = if(corona as Boolean) {
                 binding.corona!!.setBackgroundResource(R.drawable.diseases_clicked_background)
@@ -94,6 +95,7 @@ class DiseasesFragment : Fragment() {
         return binding.root
     }
 
+    // return back when arrow clicked
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.arrowLeft!!.setOnClickListener {
             findNavController().navigate(DiseasesFragmentDirections.actionDiseasesFragmentToSelectUserTypeFragment())

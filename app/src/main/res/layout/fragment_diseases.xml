@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.DiseasesFragment">
+
     <RelativeLayout
+        android:id="@+id/topPart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="13dp"
-        android:id="@+id/topPart">
+        android:padding="13dp">
 
         <ImageView
             android:id="@+id/arrow_left"
@@ -27,6 +28,7 @@
             android:textColor="@color/text_black"
             android:textSize="16sp" />
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/middle_part"
         android:layout_width="match_parent"
@@ -38,9 +40,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
             android:layout_weight="1"
-            android:layout_marginBottom="8dp">
+            android:orientation="horizontal">
 
             <RelativeLayout
                 android:id="@+id/corona"
@@ -115,10 +117,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <RelativeLayout
                 android:id="@+id/dizzy"
@@ -194,9 +196,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:layout_marginTop="8dp">
+            android:orientation="horizontal">
 
             <RelativeLayout
                 android:id="@+id/heartStorke"
