@@ -5,6 +5,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id "androidx.navigation.safeargs.kotlin"
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -20,15 +21,21 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     viewBinding{
         enabled = true
     }
+    dependenciesInfo {
+        includeInApk true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -55,25 +62,39 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:19.0.1'
     implementation 'org.greenrobot:eventbus:3.3.1'
 
+    //For Auth Firebase with BoM
+    implementation platform('com.google.firebase:firebase-bom:29.1.0')
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
+
     // Lifecycle components
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
     implementation "androidx.lifecycle:lifecycle-common-java8:2.4.1"
+
+    //For text change listener
+    implementation 'androidx.core:core-ktx:1.1.0'
 
     // Kotlin components
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
 
+    //search validation
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.43'
+    implementation 'com.hbb20:ccp:2.6.0'
+
     //Room components
-// Room components
     implementation "androidx.room:room-ktx:2.4.2"
     kapt "androidx.room:room-compiler:2.4.2"
     androidTestImplementation "androidx.room:room-testing:2.4.2"
 
+    //Safety Net
+    implementation 'com.google.android.gms:play-services-safetynet:18.0.1'
+    implementation 'androidx.browser:browser:1.4.0'
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //Additional libraries
     implementation "com.airbnb.android:lottie:3.4.0" //LottieAnimationView
-
 
 }
