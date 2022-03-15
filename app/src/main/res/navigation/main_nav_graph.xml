@@ -15,7 +15,9 @@
             app:destination="@id/selectUserTypeFragment"
             app:launchSingleTop="false"
             app:popUpTo="@id/selectUserTypeFragment"
-            app:popUpToInclusive="false" />
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/enter_right_to_left"
+            />
     </fragment>
     <fragment
         android:id="@+id/selectUserTypeFragment"
@@ -23,6 +25,7 @@
         android:label="fragment_select_user_type"
         tools:layout="@layout/fragment_select_user_type" >
         <action
+            app:enterAnim="@anim/enter_right_to_left"
             android:id="@+id/action_selectUserTypeFragment_to_diseasesFragment"
             app:destination="@id/diseasesFragment" />
     </fragment>
@@ -32,7 +35,22 @@
         android:label="fragment_diseases"
         tools:layout="@layout/fragment_diseases" >
         <action
+            app:enterAnim="@anim/enter_right_to_left"
             android:id="@+id/action_diseasesFragment_to_selectUserTypeFragment"
             app:destination="@id/selectUserTypeFragment" />
+        <action
+            app:enterAnim="@anim/enter_right_to_left"
+            android:id="@+id/action_diseasesFragment_to_addressSelectionFragment"
+            app:destination="@id/addressSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressSelectionFragment"
+        android:name="com.creativeprojects.medicall.ui.fragment.AddressSelectionFragment"
+        android:label="fragment_address_selection"
+        tools:layout="@layout/fragment_address_selection" >
+        <action
+            app:enterAnim="@anim/enter_right_to_left"
+            android:id="@+id/action_addressSelectionFragment_to_diseasesFragment"
+            app:destination="@id/diseasesFragment" />
     </fragment>
 </navigation>

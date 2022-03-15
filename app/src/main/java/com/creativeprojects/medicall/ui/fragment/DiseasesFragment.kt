@@ -97,8 +97,12 @@ class DiseasesFragment : Fragment() {
 
     // return back when arrow clicked
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.arrowLeft!!.setOnClickListener {
+        binding.arrowLeft?.setOnClickListener {
             findNavController().navigate(DiseasesFragmentDirections.actionDiseasesFragmentToSelectUserTypeFragment())
+        }
+
+        binding.mbConfirm.setOnClickListener {
+            findNavController().navigate(DiseasesFragmentDirections.actionDiseasesFragmentToAddressSelectionFragment())
         }
         super.onViewCreated(view, savedInstanceState)
     }

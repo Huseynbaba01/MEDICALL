@@ -28,8 +28,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Ünvanın seçilməsi"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
-            android:textSize="17sp" />
+            android:textSize="16sp" />
     </RelativeLayout>
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/search_card"

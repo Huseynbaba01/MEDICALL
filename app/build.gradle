@@ -1,5 +1,6 @@
 plugins {
-    id "kapt"
+    id 'kotlin-android'
+    id 'kotlin-kapt'
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
@@ -65,8 +66,11 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
 
     //Room components
-    implementation "androidx.room:room-runtime:2.4.2"
+// Room components
+    implementation "androidx.room:room-ktx:2.4.2"
     kapt "androidx.room:room-compiler:2.4.2"
+    androidTestImplementation "androidx.room:room-testing:2.4.2"
+
 
     //Additional libraries
     implementation "com.airbnb.android:lottie:3.4.0" //LottieAnimationView
