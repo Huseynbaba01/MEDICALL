@@ -10,14 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavDirections
-import androidx.navigation.NavHost
 import androidx.navigation.fragment.NavHostFragment
-import com.creativeprojects.medicall.HelperClasses.GenericTextWatcher
+import com.creativeprojects.medicall.utils.helper.GenericTextWatcher
 import com.creativeprojects.medicall.databinding.FragmentOTPBinding
-import com.creativeprojects.medicall.model.event.SendPhoneNumberAndCountryCodeEvent
-import com.creativeprojects.medicall.model.event.SendVerificationCodeEvent
+import com.creativeprojects.medicall.event.SendPhoneNumberAndCountryCodeEvent
+import com.creativeprojects.medicall.event.SendVerificationCodeEvent
 import com.creativeprojects.medicall.network.MyFirebase
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.PhoneAuthProvider

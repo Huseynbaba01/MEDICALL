@@ -1,4 +1,4 @@
-package com.creativeprojects.medicall.model.event
+package com.creativeprojects.medicall.event
 
 class SendVerificationCodeEvent(verificationCode: String) {
     var verificationId = verificationCode

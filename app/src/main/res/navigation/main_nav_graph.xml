@@ -52,5 +52,37 @@
             app:enterAnim="@anim/enter_right_to_left"
             android:id="@+id/action_addressSelectionFragment_to_diseasesFragment"
             app:destination="@id/diseasesFragment" />
+        <action
+            app:enterAnim="@anim/enter_right_to_left"
+            android:id="@+id/action_addressSelectionFragment_to_continueWithPhoneNumberFragment"
+            app:destination="@id/continueWithPhoneNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/continueWithPhoneNumberFragment"
+        android:name="com.creativeprojects.medicall.fragment.ContinueWithPhoneNumberFragment"
+        android:label="fragment_continue_with_phone_number"
+        tools:layout="@layout/fragment_continue_with_phone_number" >
+        <action
+            app:enterAnim="@anim/enter_right_to_left"
+            android:id="@+id/action_continueWithPhoneNumberFragment_to_OTPFragment"
+            app:destination="@id/OTPFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmedFragment"
+        android:name="com.creativeprojects.medicall.fragment.ConfirmedFragment"
+        android:label="fragment_confirmed"
+        tools:layout="@layout/fragment_confirmed" />
+    <fragment
+        android:id="@+id/OTPFragment"
+        android:name="com.creativeprojects.medicall.fragment.OTPFragment"
+        android:label="fragment_o_t_p"
+        tools:layout="@layout/fragment_o_t_p" >
+        <action
+            app:enterAnim="@anim/enter_right_to_left"
+            android:id="@+id/action_OTPFragment_to_confirmedFragment"
+            app:destination="@id/confirmedFragment" />
+        <action
+            android:id="@+id/action_OTPFragment_self"
+            app:destination="@id/OTPFragment" />
     </fragment>
 </navigation>

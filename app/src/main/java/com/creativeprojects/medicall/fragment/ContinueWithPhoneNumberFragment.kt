@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import com.creativeprojects.medicall.HelperClasses.SearchValidation
+import com.creativeprojects.medicall.utils.helper.SearchValidation
 import com.creativeprojects.medicall.databinding.FragmentContinueWithPhoneNumberBinding
-import com.creativeprojects.medicall.model.event.SendPhoneNumberAndCountryCodeEvent
-import com.creativeprojects.medicall.model.event.StartActionToOTPEvent
+import com.creativeprojects.medicall.event.SendPhoneNumberAndCountryCodeEvent
+import com.creativeprojects.medicall.event.StartActionToOTPEvent
 import com.creativeprojects.medicall.network.MyFirebase
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe

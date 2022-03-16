@@ -1,6 +1,6 @@
-package com.creativeprojects.medicall.HelperClasses;
+package com.creativeprojects.medicall.utils.helper;
 
-import com.creativeprojects.medicall.dataholder.PhoneValidity;
+import com.creativeprojects.medicall.utils.helper.model.PhoneValidity;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;

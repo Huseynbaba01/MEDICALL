@@ -1,4 +1,4 @@
-package com.creativeprojects.medicall.dataholder;
+package com.creativeprojects.medicall.utils.helper.model;
 
 public class PhoneValidity {
     private String phone;

@@ -1,4 +1,4 @@
-package com.creativeprojects.medicall.model.event
+package com.creativeprojects.medicall.event
 
 class SendPhoneNumberAndCountryCodeEvent(countryCode:String,phoneNumber:String) {
     var countryCode=countryCode

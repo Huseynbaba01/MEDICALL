@@ -1,9 +1,8 @@
-package com.creativeprojects.medicall.HelperClasses
+package com.creativeprojects.medicall.utils.helper
 
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import com.creativeprojects.medicall.databinding.FragmentOTPBinding
 import com.google.android.material.textfield.TextInputEditText
 
 class GenericTextWatcher(etNext : TextInputEditText,etPrev : TextInputEditText) : TextWatcher {

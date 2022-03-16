@@ -40,14 +40,14 @@ object MapHelper {
         googleMap.clear()
     }
 
-    fun animateCameraTo(location: LatLng, googleMap: GoogleMap, duration: Long) {
+    fun animateCameraTo(location: LatLng, googleMap: GoogleMap, duration: Int) {
         val cameraPosition = CameraPosition.Builder()
             .target(location)
             .zoom(16f)
             .bearing(0f)
             .tilt(0f)
             .build()
-        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 3000, null)
+        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), duration, null)
     }
 
     fun getCurrentLocation(context: Context): Location {

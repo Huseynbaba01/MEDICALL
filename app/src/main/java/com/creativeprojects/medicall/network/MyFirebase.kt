@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import com.creativeprojects.medicall.fragment.ContinueWithPhoneNumberFragment
-import com.creativeprojects.medicall.model.event.SendVerificationCodeEvent
-import com.creativeprojects.medicall.model.event.StartActionToOTPEvent
+import com.creativeprojects.medicall.event.SendVerificationCodeEvent
+import com.creativeprojects.medicall.event.StartActionToOTPEvent
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import org.greenrobot.eventbus.EventBus
@@ -57,7 +57,7 @@ class MyFirebase(activity: Activity) {
     }
 
     fun verifyPhoneNumber(view: View, credential: PhoneAuthCredential , directions: NavDirections, fragment: Fragment) {
-        auth!!.signInWithCredential(credential)
+        auth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     NavHostFragment.findNavController(fragment).navigate(directions)

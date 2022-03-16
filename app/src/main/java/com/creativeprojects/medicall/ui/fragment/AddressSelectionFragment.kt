@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.creativeprojects.medicall.databinding.FragmentAddressSelectionBinding
 import com.creativeprojects.medicall.event.HistoryItemDeletedEvent
@@ -25,7 +26,6 @@ import com.creativeprojects.medicall.utils.helper.CommonHelper
 import com.creativeprojects.medicall.utils.helper.MapHelper
 import com.creativeprojects.medicall.utils.helper.MessageHelper
 import com.creativeprojects.medicall.utils.helper.TimeHelper
-import com.creativeprojects.medicall.utils.mock.DoAsyncTask
 import com.creativeprojects.medicall.utils.mock.MockCancellationToken
 import com.creativeprojects.medicall.viewmodel.AddressSelectionViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -107,6 +107,10 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
         binding.searchInput.onFocusChangeListener = this
         binding.searchButton.setOnClickListener {
             binding.searchInput.clearFocus()
+        }
+
+        binding.btnAssign.setOnClickListener {
+            findNavController().navigate(AddressSelectionFragmentDirections.actionAddressSelectionFragmentToContinueWithPhoneNumberFragment())
         }
 
         binding.btnAuto.setOnClickListener {

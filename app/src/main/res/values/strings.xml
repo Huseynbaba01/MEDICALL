@@ -1,10 +1,5 @@
 <resources>
-    <string name="app_name">MEDICALL</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="apps_purpose">App in meqsedin izah eden qisa bir cumle yazilacaq</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="yenidenGonder"><u>Yenidən göndər</u></string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name" translatable="false">MEDICALL</string>
+    <string name="apps_purpose" translatable="false">App in meqsedin izah eden qisa bir cumle yazilacaq</string>
+    <string name="yenidenGonder" translatable="false"><u>Yenidən göndər</u></string> <!--Arif burda adlandirmaya diqqet edek zehmet olmasa:)-->
 </resources>
