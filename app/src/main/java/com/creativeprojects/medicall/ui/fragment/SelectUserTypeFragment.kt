@@ -20,6 +20,9 @@ class SelectUserTypeFragment : Fragment() {
         binding.cvCallAmbulance.setOnClickListener {
             findNavController().navigate(SelectUserTypeFragmentDirections.actionSelectUserTypeFragmentToDiseasesFragment())
         }
+        binding.cvAsDoctor.setOnClickListener {
+            findNavController().navigate(SelectUserTypeFragmentDirections.actionSelectUserTypeFragmentToApplication())
+        }
         return binding.root
 
     }

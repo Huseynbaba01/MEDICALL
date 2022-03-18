@@ -28,6 +28,9 @@
             app:enterAnim="@anim/enter_right_to_left"
             android:id="@+id/action_selectUserTypeFragment_to_diseasesFragment"
             app:destination="@id/diseasesFragment" />
+        <action
+            android:id="@+id/action_selectUserTypeFragment_to_application"
+            app:destination="@id/application" />
     </fragment>
     <fragment
         android:id="@+id/diseasesFragment"
@@ -85,4 +88,8 @@
             android:id="@+id/action_OTPFragment_self"
             app:destination="@id/OTPFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/application"
+        android:name="com.creativeprojects.medicall.ui.fragment.Application"
+        android:label="Application" />
 </navigation>

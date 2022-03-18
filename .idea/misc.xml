@@ -3,10 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/backicon.xml" value="0.173" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/belowmaplayout.xml" value="0.173" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/diseases_background.xml" value="0.173" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/diseases_clicked_background.xml" value="0.173" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/ic_launcher_background.xml" value="0.17" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/myd.xml" value="0.143" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/dialog_progress.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_address_selection.xml" value="0.33" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_address_selection.xml" value="0.32157506152584087" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_application.xml" value="0.2" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_diseases.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_intro.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_maps.xml" value="0.1" />

@@ -11,5 +11,10 @@
     <color name="main_blue">#20A0D8</color>
     <color name="text_black">#4F4949</color>
     <color name="text_grey">#BDBDBD</color>
+    <color name="text_light">#959595</color>
+    <color name="text_dark">#4F4949</color>
+    <color name="view_grey">#E9E8E8</color>
+    <color name="green">#56B845</color>
+    <color name="secondary_sky_blue">#20A0D8</color>
 
 </resources>
