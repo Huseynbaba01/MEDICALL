@@ -180,7 +180,7 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
                     subtitle
                 )
             )
-        },500)
+        },100)
 }
 
 

@@ -90,6 +90,6 @@
     </fragment>
     <fragment
         android:id="@+id/application"
-        android:name="com.creativeprojects.medicall.ui.fragment.Application"
+        android:name="com.creativeprojects.medicall.ui.fragment.ApplicationFragment"
         android:label="Application" />
 </navigation>

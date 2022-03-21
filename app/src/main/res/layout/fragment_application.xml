@@ -11,21 +11,19 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragment.Application" />
-
+        tools:context=".ui.fragment.ApplicationFragment" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_notifications"
+        android:layout_width="wrap_content"
+        app:borderWidth="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/white"
         android:src="@drawable/bell_light"
         app:tint="@null"
-        android:foregroundTintMode="src_over"
-        android:backgroundTint="@color/white"
-        android:layout_alignParentEnd="true"
-        app:useCompatPadding="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        app:useCompatPadding="true" />
 
     <RelativeLayout
         android:id="@+id/bottom_info"
