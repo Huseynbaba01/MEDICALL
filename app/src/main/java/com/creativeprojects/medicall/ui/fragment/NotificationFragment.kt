@@ -13,8 +13,11 @@ import androidx.room.Delete
 import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.DeletemessageDialogBinding
 import com.creativeprojects.medicall.databinding.FragmentNotificationBinding
+import com.creativeprojects.medicall.event.CheckListEvent
 import com.creativeprojects.medicall.ui.adapter.RecycNotificationAdapter
 import com.creativeprojects.medicall.ui.dialog.DeleteMessageDialog
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class NotificationFragment : Fragment() {
     lateinit var binding: FragmentNotificationBinding
@@ -62,8 +65,17 @@ class NotificationFragment : Fragment() {
 
     }
 
+    @Subscribe(threadMode = ThreadMode.ASYNC,sticky = true)
+    private fun onCheckListEvent(checkListEvent: CheckListEvent ){
+    }
+
+    private fun checkEmptiness(){
+        //TODO check the emptiness of list(if empty: change the Recycler View with the imageView which is called forEmptyPicture)
+    }
+
 
     private fun assignRecyclerView(){
+        checkEmptiness()
         //TODO after getting databases we can use adapter to configure recyclerView
 //        binding.myRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
 //        binding.myRecyclerView.adapter = RecycNotificationAdapter()

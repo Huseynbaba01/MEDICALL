@@ -54,7 +54,33 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/myRecyclerView"/>
+            android:id="@+id/myRecyclerView"
+            android:visibility="visible"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone"
+            android:id="@+id/forEmptyPicture">
+            <ImageView
+                android:layout_width="329dp"
+                android:layout_height="329dp"
+                android:id="@+id/myImage"
+                android:background="@drawable/thereisnonotification"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bildiriş yoxdur"
+                android:textSize="16sp"
+                android:textColor="#4F4949"
+                android:id="@+id/thereIsNoNotification"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
     </LinearLayout>
 
 </FrameLayout>
