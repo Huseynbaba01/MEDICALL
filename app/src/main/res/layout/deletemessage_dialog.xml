@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/closeDialog"
+            android:background="@drawable/x_image" />
+    </RelativeLayout>
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bildirişləri silmək istədiyinizdən əminsinizmi?"
+        android:id="@+id/deleteMessage"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="#4F4949"
+        android:inputType="textMultiLine"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:thicknessRatio="1.9"
+            android:id="@+id/yesButton"
+            app:cardCornerRadius="8dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Bəli"
+                android:textSize="16sp"
+                android:textColor="#CE2029"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:layout_marginLeft="16dp"/>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Xeyr"
+            android:layout_weight="1"
+            android:id="@+id/noButton"
+            android:layout_gravity="center"
+            android:inputType="none"
+            android:gravity="center"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="11dp"/>
+
+
+    </LinearLayout>
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

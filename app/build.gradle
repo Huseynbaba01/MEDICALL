@@ -95,4 +95,7 @@ dependencies {
     //Additional libraries
     implementation "com.airbnb.android:lottie:3.4.0" //LottieAnimationView
 
+    //DialogFragment libraries
+    implementation "androidx.com.android.support:design:28.0.0"
+
 }

@@ -91,5 +91,14 @@
     <fragment
         android:id="@+id/application"
         android:name="com.creativeprojects.medicall.ui.fragment.ApplicationFragment"
-        android:label="Application" />
+        android:label="Application" >
+        <action
+            android:id="@+id/action_application_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.creativeprojects.medicall.ui.fragment.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>
