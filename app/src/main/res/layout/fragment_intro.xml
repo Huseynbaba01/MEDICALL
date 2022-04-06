@@ -6,7 +6,7 @@
     android:background="@color/main_red"
     android:orientation="vertical"
     android:padding="80dp"
-    tools:context=".ui.fragment.IntroFragment">
+    tools:context=".ui.fragment.general.IntroFragment">
 
 
     <RelativeLayout

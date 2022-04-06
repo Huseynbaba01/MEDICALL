@@ -1,4 +1,4 @@
-package com.creativeprojects.medicall.ui.fragment
+package com.creativeprojects.medicall.ui.fragment.patient_pages
 
 import android.Manifest
 import android.content.Context
@@ -22,6 +22,7 @@ import com.creativeprojects.medicall.event.HistoryItemDeletedEvent
 import com.creativeprojects.medicall.event.HistoryItemSelectedEvent
 import com.creativeprojects.medicall.model.AddressHistoryItem
 import com.creativeprojects.medicall.ui.adapter.AddressHistoryAdapter
+import com.creativeprojects.medicall.ui.fragment.general.BaseFragment
 import com.creativeprojects.medicall.utils.helper.CommonHelper
 import com.creativeprojects.medicall.utils.helper.MapHelper
 import com.creativeprojects.medicall.utils.helper.MessageHelper

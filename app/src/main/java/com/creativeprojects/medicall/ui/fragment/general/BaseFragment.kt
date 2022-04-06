@@ -1,4 +1,4 @@
-package com.creativeprojects.medicall.ui.fragment
+package com.creativeprojects.medicall.ui.fragment.general
 
 import androidx.fragment.app.Fragment
 import org.greenrobot.eventbus.EventBus

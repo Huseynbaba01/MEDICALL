@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".ui.fragment.SelectUserTypeFragment">
+    tools:context=".ui.fragment.general.SelectUserTypeFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
