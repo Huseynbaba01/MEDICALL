@@ -31,6 +31,7 @@
                     android:background="@drawable/successcheck" />
 
                 <TextView
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -42,6 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:cardElevation="4dp"
                     app:cardCornerRadius="6dp">
 
                     <LinearLayout
@@ -62,8 +64,10 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
+                                    android:fontFamily="@font/poppins_medium"
                                     android:gravity="center_vertical"
                                     android:text="Ünvan"
+                                    android:textColor="@color/text_grey"
                                     android:textSize="14sp" />
                             </RelativeLayout>
 
@@ -77,6 +81,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
+                                    android:fontFamily="@font/poppins_regular"
                                     android:text="Write user's address here!"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
@@ -87,8 +92,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="65dp"
-                            android:background="#AFAEAE">
+                            android:layout_height="65dp">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -97,8 +101,10 @@
 
                                 <TextView
                                     android:layout_width="wrap_content"
+                                    android:textColor="@color/text_grey"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
+                                    android:fontFamily="@font/poppins_medium"
                                     android:gravity="center_vertical"
                                     android:text="Səbəb"
                                     android:textSize="14sp" />
@@ -114,7 +120,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
-                                    android:text="Write  user's reason here!"
+                                    android:fontFamily="@font/poppins_regular"
+                                    android:text="Write user's reason here!"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
 
@@ -134,12 +141,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cornerRadius="5dp"
-            android:backgroundTint="#E52D2D"
+            android:backgroundTint="@color/main_blue"
             android:layout_gravity="center_horizontal"
             android:text="Bağla"
             android:textAllCaps="false"
             android:textSize="20sp"
             android:id="@+id/Close"
+            android:fontFamily="@font/poppins_medium"
             android:padding="10dp"
             />
     </LinearLayout>

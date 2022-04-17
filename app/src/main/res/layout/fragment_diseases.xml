@@ -310,7 +310,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/main_red"
+                android:backgroundTint="@color/main_blue"
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="start"
                 android:hint="Səbəbi daxil edin"
@@ -326,7 +326,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/main_red"
+            android:backgroundTint="@color/main_blue"
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/poppins_medium"

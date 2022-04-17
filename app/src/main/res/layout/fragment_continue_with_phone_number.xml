@@ -159,7 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cornerRadius="5dp"
-                    android:backgroundTint="#E52D2D"
+                    android:backgroundTint="@color/main_blue"
                     android:layout_gravity="center_horizontal"
                     android:text="Növbəti"
                     android:textAllCaps="false"

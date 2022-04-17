@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_red"
+    android:background="@color/main_blue"
     android:orientation="vertical"
     android:padding="80dp"
     tools:context=".ui.fragment.general.IntroFragment">

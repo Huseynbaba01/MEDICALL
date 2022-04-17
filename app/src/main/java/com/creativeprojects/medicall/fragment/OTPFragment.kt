@@ -1,5 +1,6 @@
 package com.creativeprojects.medicall.fragment
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -81,6 +82,7 @@ class OTPFragment : BaseFragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     private fun showPhoneNumberInOTP() {
         Log.d(TAG, "showPhoneNumberInOTP: yes,you did it")
 
@@ -92,33 +94,33 @@ class OTPFragment : BaseFragment() {
                 formattedPhoneNumber = PhoneNumberUtils.formatNumber(phoneNumber, countryCode)
                 Toast.makeText(requireContext(), "e164 : $formattedPhoneNumber", Toast.LENGTH_SHORT).show()
             } else {
-                try {
+                formattedPhoneNumber = try {
                     val instance = PhoneNumberUtil.getInstance()
                     val phoneNumber = instance.parse(phoneNumber, countryCode)
-                    formattedPhoneNumber =
-                        instance.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.E164)
+                    instance.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.E164)
 
                 } catch (e: NumberParseException) {
                     Log.e(TAG, "Caught: " + e.message, e)
-                    formattedPhoneNumber = phoneNumber
+                    phoneNumber
                 }
             }
         }
 
 
-        binding.secondText.setText("Kod "+formattedPhoneNumber + " nömrəsinə göndərildi")
-        Log.d(TAG, "showPhoneNumberInOTP: also that is true!..countryCode:"+countryCode)
+        binding.secondText.text = "Kod $formattedPhoneNumber nömrəsinə göndərildi"
+        Log.d(TAG, "showPhoneNumberInOTP: also that is true!..countryCode:$countryCode")
     }
 
     private fun startTimer() {
         object : CountDownTimer(60000, 1000) {
 
+            @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
-                var secondUntilFinished=millisUntilFinished/1000
+                val secondUntilFinished=millisUntilFinished/1000
                 if(secondUntilFinished<10){
-                    binding.timer.setText("00:0"+secondUntilFinished)
+                    binding.timer.text = "00:0$secondUntilFinished"
                 }else{
-                    binding.timer.setText("00:"+secondUntilFinished)
+                    binding.timer.text = "00:$secondUntilFinished"
                 }
 
             }

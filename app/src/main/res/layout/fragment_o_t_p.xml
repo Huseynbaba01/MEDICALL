@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.OTPFragment">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
         android:id="@+id/mainLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/backicon" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -42,6 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/poppins_regular"
                         android:gravity="center_vertical"
                         android:paddingBottom="10dp"
                         android:text="Telefon nömrənizi təsdiq edin"
@@ -49,6 +50,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:fontFamily="@font/poppins_regular"
                         android:id="@+id/secondText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -68,17 +70,19 @@
                 android:layout_weight="0.5"
                 android:orientation="vertical">
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <LinearLayout
                     android:id="@+id/otp_section"
                     android:layout_width="match_parent"
+                    android:paddingVertical="5dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/firstOTP"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_marginRight="2dp"
                         android:layout_weight="1"
                         app:boxCornerRadiusBottomEnd="10dp"
@@ -88,12 +92,12 @@
                         app:layout_constraintHorizontal_chainStyle="packed"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toLeftOf="@id/secondOTP"
-                        app:layout_constraintTop_toTopOf="@+id/otp_section">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/firstEt"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:gravity="center_vertical"
                             android:inputType="number"
                             android:maxLength="1"
@@ -102,8 +106,9 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/secondOTP"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         android:layout_weight="1"
@@ -113,12 +118,12 @@
                         app:boxCornerRadiusTopStart="10dp"
                         app:layout_constraintLeft_toRightOf="@id/firstOTP"
                         app:layout_constraintRight_toLeftOf="@id/thirdOTP"
-                        app:layout_constraintTop_toTopOf="@+id/otp_section">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/secondEt"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:gravity="center"
                             android:inputType="number"
                             android:maxLength="1"
@@ -128,17 +133,19 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/thirdOTP"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         android:layout_weight="1"
                         app:boxCornerRadiusBottomEnd="10dp"
                         app:boxCornerRadiusBottomStart="10dp"
                         app:boxCornerRadiusTopEnd="10dp"
+                        app:boxBackgroundColor="@color/white"
                         app:boxCornerRadiusTopStart="10dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:layout_constraintLeft_toRightOf="@id/secondOTP"
                         app:layout_constraintRight_toLeftOf="@id/fourthOTP"
-                        app:layout_constraintTop_toTopOf="@+id/otp_section">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/thirdEt"
@@ -161,9 +168,10 @@
                         app:boxCornerRadiusBottomStart="10dp"
                         app:boxCornerRadiusTopEnd="10dp"
                         app:boxCornerRadiusTopStart="10dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:layout_constraintLeft_toRightOf="@id/thirdOTP"
                         app:layout_constraintRight_toLeftOf="@id/fifthOTP"
-                        app:layout_constraintTop_toTopOf="@+id/otp_section">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/fourthEt"
@@ -186,9 +194,10 @@
                         app:boxCornerRadiusBottomStart="10dp"
                         app:boxCornerRadiusTopEnd="10dp"
                         app:boxCornerRadiusTopStart="10dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:layout_constraintLeft_toRightOf="@id/fourthOTP"
                         app:layout_constraintRight_toLeftOf="@id/sixthOTP"
-                        app:layout_constraintTop_toTopOf="@+id/otp_section">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/fifthEt"
@@ -202,6 +211,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/sixthOTP"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="2dp"
@@ -213,7 +223,7 @@
                         app:boxCornerRadiusTopStart="10dp"
                         app:layout_constraintLeft_toRightOf="@id/fifthOTP"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/otp_section">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/sixthEt"
@@ -224,7 +234,7 @@
                             android:maxLength="1"
                             android:textSize="18sp" />
                     </com.google.android.material.textfield.TextInputLayout>
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/timer"
@@ -232,12 +242,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center_horizontal"
-                    android:text="00:58"
+                    android:text="00:59"
+                    android:fontFamily="@font/poppins_medium"
                     android:textSize="16sp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:paddingBottom="10dp">
 
                     <LinearLayout
@@ -247,18 +258,20 @@
                         android:layout_centerHorizontal="true">
 
                         <TextView
+                            android:fontFamily="@font/poppins_medium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Kod almadınız?"
                             android:textSize="14sp" />
 
                         <TextView
+                            android:fontFamily="@font/poppins_medium"
                             android:id="@+id/id_yenidenGonder"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="10dp"
                             android:text="@string/yenidenGonder"
-                            android:textColor="#E52D2D"
+                            android:textColor="@color/main_blue"
                             android:textSize="14sp" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -266,15 +279,16 @@
 
             </LinearLayout>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
 
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/confirmButton"
             android:layout_width="match_parent"
+            android:fontFamily="@font/poppins_medium"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="#E52D2D"
+            android:backgroundTint="@color/main_blue"
             android:padding="10dp"
             android:text="Təsdiqlə"
             android:textAllCaps="false"
@@ -282,7 +296,7 @@
             app:cornerRadius="6px" />
 
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
 
 
 

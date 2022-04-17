@@ -162,12 +162,12 @@
             android:layout_height="55dp"
             android:layout_below="@id/layout_buttons"
             android:fontFamily="@font/poppins_regular"
-            android:foregroundTint="@color/main_red"
+            android:foregroundTint="@color/main_blue"
             android:outlineProvider="bounds"
             android:text="@string/title_cancel"
             android:textSize="16sp"
             app:cornerRadius="6dp"
-            app:strokeColor="@color/main_red" />
+            app:strokeColor="@color/main_blue" />
 
     </RelativeLayout>
 
