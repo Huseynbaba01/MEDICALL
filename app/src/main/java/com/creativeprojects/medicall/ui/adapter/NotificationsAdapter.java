@@ -14,12 +14,12 @@ import com.creativeprojects.medicall.R;
 
 import java.util.List;
 
-public class RecycNotificationAdapter extends RecyclerView.Adapter<RecycNotificationAdapter.ViewHolder>{
+public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.ViewHolder>{
     List<Bitmap> myPictures;
     List<String> myNotificationMessages;
     List<String> dateFormat;
 
-    public RecycNotificationAdapter(List<Bitmap> myPictures, List<String> myNotificationMessages, List<String> dateFormat) {
+    public NotificationsAdapter(List<Bitmap> myPictures, List<String> myNotificationMessages, List<String> dateFormat) {
         this.myPictures = myPictures;
         this.myNotificationMessages = myNotificationMessages;
         this.dateFormat = dateFormat;

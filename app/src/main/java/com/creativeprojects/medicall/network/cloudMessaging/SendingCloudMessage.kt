@@ -4,7 +4,7 @@ import android.util.Log
 import com.creativeprojects.medicall.network.methods.PushNotification
 import com.creativeprojects.medicall.network.methods.RetrofitInstance
 import com.creativeprojects.medicall.network.network_data.NotificationData
-import com.creativeprojects.medicall.ui.fragment.TOPIC
+import com.creativeprojects.medicall.ui.fragment.general.NotificationFragment.Companion.TOPIC
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

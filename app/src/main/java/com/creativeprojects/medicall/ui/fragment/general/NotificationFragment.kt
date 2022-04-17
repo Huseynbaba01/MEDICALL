@@ -1,6 +1,5 @@
-package com.creativeprojects.medicall.ui.fragment
+package com.creativeprojects.medicall.ui.fragment.general
 
-import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,24 +13,22 @@ import com.creativeprojects.medicall.network.cloudMessaging.SendingCloudMessage
 import com.creativeprojects.medicall.ui.dialog.DeleteMessageDialog
 import com.google.firebase.messaging.FirebaseMessaging
 
-const val TOPIC = "/topics/myTopic"
-lateinit var token:String
 
 class NotificationFragment : Fragment() {
     lateinit var binding: FragmentNotificationBinding
     var isRead: Boolean = false
-    lateinit var dialog: Dialog
     private val TAG = "MyTagHere"
+    lateinit var token:String
 
-
-
+    companion object {
+        const val TOPIC = "/topics/myTopic"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNotificationBinding.inflate(inflater)
-        dialog = Dialog(requireContext())
 
 
         //TODO find library for FirebaseInstanceId
@@ -96,7 +93,7 @@ class NotificationFragment : Fragment() {
         checkEmptiness()
         //TODO after getting databases we can use adapter to configure recyclerView
 //        binding.myRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-//        binding.myRecyclerView.adapter = RecycNotificationAdapter()
+//        binding.myRecyclerView.adapter = NotificationsAdapter()
 
     }
 
