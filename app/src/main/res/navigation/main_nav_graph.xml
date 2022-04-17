@@ -90,7 +90,7 @@
     </fragment>
     <fragment
         android:id="@+id/application"
-        android:name="com.creativeprojects.medicall.ui.fragment.ApplicationFragment"
+        android:name="com.creativeprojects.medicall.ui.fragment.patient_pages.ApplicationFragment"
         android:label="Application" >
         <action
             android:id="@+id/action_application_to_notificationFragment"

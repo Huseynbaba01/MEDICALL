@@ -8,93 +8,103 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.FragmentDiseasesBinding
+import com.creativeprojects.medicall.utils.helper.model.Disease
+import com.creativeprojects.medicall.utils.helper.model.DiseaseType.CORONA
+import com.creativeprojects.medicall.utils.helper.model.DiseaseType.BLEEDING
+import com.creativeprojects.medicall.utils.helper.model.DiseaseType.CAR_CRASH
+import com.creativeprojects.medicall.utils.helper.model.DiseaseType.FEVER
+import com.creativeprojects.medicall.utils.helper.model.DiseaseType.DIZZY
+import com.creativeprojects.medicall.utils.helper.model.DiseaseType.HEART_STROKE
 
 
 class DiseasesFragment : Fragment() {
 
 
     private lateinit var binding: FragmentDiseasesBinding
-    private var corona:Boolean? = null
-    private var carCrash:Boolean? = null
-    private var dizzy:Boolean? = null
-    private var fever:Boolean? = null
-    private var heartStroke:Boolean? = null
-    private var bleeding:Boolean? = null
+    private val corona = Disease(CORONA)
+    private val carCrash = Disease(CAR_CRASH)
+    private val dizzy = Disease(DIZZY)
+    private val fever = Disease(FEVER)
+    private val heartStroke = Disease(HEART_STROKE)
+    private val bleeding = Disease(BLEEDING)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        corona = true
-        fever = true
-        carCrash = true
-        dizzy = true
-        heartStroke = true
-        bleeding = true
+        corona.selected = false
+        fever.selected = false
+        carCrash.selected= false
+        dizzy.selected = false
+        heartStroke.selected = false
+        bleeding.selected = false
         binding = FragmentDiseasesBinding.inflate(inflater)
 
         // making  diseases change background when clicked
         binding.corona?.setOnClickListener {
-            corona = if(corona as Boolean) {
-                binding.corona!!.setBackgroundResource(R.drawable.diseases_clicked_background)
-                false
-            } else {
-                binding.corona!!.setBackgroundResource(R.drawable.diseases_background)
-                true
-            }
+            selectItem(it, corona)
         }
 
         binding.carCrash?.setOnClickListener {
-            carCrash = if(carCrash as Boolean) {
-                binding.carCrash!!.setBackgroundResource(R.drawable.diseases_clicked_background)
-                false
-            } else {
-                binding.carCrash!!.setBackgroundResource(R.drawable.diseases_background)
-                true
-            }
+            selectItem(it, carCrash)
         }
 
         binding.dizzy?.setOnClickListener {
-            dizzy = if(dizzy as Boolean) {
-                binding.dizzy!!.setBackgroundResource(R.drawable.diseases_clicked_background)
-                false
-
-            } else {
-                binding.dizzy!!.setBackgroundResource(R.drawable.diseases_background)
-                true
-            }
+            selectItem(it, dizzy)
         }
 
         binding.fever?.setOnClickListener {
-            fever = if(fever as Boolean) {
-                binding.fever!!.setBackgroundResource(R.drawable.diseases_clicked_background)
-                false
-            } else {
-                binding.fever!!.setBackgroundResource(R.drawable.diseases_background)
-                true
-            }
+            selectItem(it, fever)
+
         }
 
-        binding.heartStorke?.setOnClickListener {
-            heartStroke = if(heartStroke as Boolean) {
-                binding.heartStorke!!.setBackgroundResource(R.drawable.diseases_clicked_background)
-                false
-            } else {
-                binding.heartStorke!!.setBackgroundResource(R.drawable.diseases_background)
-                true
-            }
+        binding.heartStroke?.setOnClickListener {
+            selectItem(it, heartStroke)
         }
 
         binding.bleeding?.setOnClickListener {
-            bleeding = if(bleeding as Boolean) {
-                binding.bleeding!!.setBackgroundResource(R.drawable.diseases_clicked_background)
-                false
-            } else {
-                binding.bleeding!!.setBackgroundResource(R.drawable.diseases_background)
-                true
-            }
+            selectItem(it, bleeding)
         }
 
         return binding.root
+    }
+
+    private fun selectItem(item: View, disease: Disease){
+        disease.selected = if(!disease.selected) {
+            clearOtherBesides(disease)
+            item.setBackgroundResource(R.drawable.diseases_clicked_background)
+            true
+        } else {
+            item.setBackgroundResource(R.drawable.diseases_background)
+            false
+        }
+    }
+
+    private fun clearOtherBesides(disease: Disease){
+        if(disease != corona) {
+            binding.corona?.setBackgroundResource(R.drawable.diseases_background)
+            corona.selected = false
+        }
+        if(disease != carCrash) {
+        binding.carCrash?.setBackgroundResource(R.drawable.diseases_background)
+        carCrash.selected = false
+        }
+        if(disease != dizzy) {
+        binding.dizzy?.setBackgroundResource(R.drawable.diseases_background)
+        dizzy.selected = false
+        }
+        if(disease != fever) {
+        binding.fever?.setBackgroundResource(R.drawable.diseases_background)
+        fever.selected = false
+        }
+        if(disease != heartStroke) {
+        binding.heartStroke?.setBackgroundResource(R.drawable.diseases_background)
+        heartStroke.selected = false
+        }
+        if(disease != bleeding) {
+        binding.bleeding?.setBackgroundResource(R.drawable.diseases_background)
+        bleeding.selected = false
+        }
     }
 
     // return back when arrow clicked

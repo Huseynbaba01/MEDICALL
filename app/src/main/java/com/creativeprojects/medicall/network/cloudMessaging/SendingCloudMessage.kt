@@ -1,6 +1,5 @@
 package com.creativeprojects.medicall.network.cloudMessaging
 
-import android.graphics.Bitmap
 import android.util.Log
 import com.creativeprojects.medicall.network.methods.PushNotification
 import com.creativeprojects.medicall.network.methods.RetrofitInstance

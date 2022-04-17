@@ -1,26 +1,18 @@
 package com.creativeprojects.medicall.ui.fragment
 
 import android.app.Dialog
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.Fragment
 import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.FragmentNotificationBinding
 import com.creativeprojects.medicall.network.cloudMessaging.SendingCloudMessage
-import com.creativeprojects.medicall.network.methods.PushNotification
-import com.creativeprojects.medicall.network.methods.RetrofitInstance
-import com.creativeprojects.medicall.network.network_data.NotificationData
 import com.creativeprojects.medicall.ui.dialog.DeleteMessageDialog
 import com.google.firebase.messaging.FirebaseMessaging
-import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.lang.Exception
 
 const val TOPIC = "/topics/myTopic"
 lateinit var token:String
@@ -37,13 +29,13 @@ class NotificationFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentNotificationBinding.inflate(inflater)
         dialog = Dialog(requireContext())
 
 
         //TODO find library for FirebaseInstanceId
-        FirebaseMessaging.getInstance().token.addOnCompleteListener {myToken ->
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { myToken ->
             if (myToken.isSuccessful){
                 Log.d(
                     TAG,
@@ -70,20 +62,20 @@ class NotificationFragment : Fragment() {
 
         binding.markAsRead.setOnClickListener(View.OnClickListener {
             isRead = if(!isRead) {
-                binding.markAsRead.setBackground(resources.getDrawable(R.drawable.mark_as_read_blue))
+                binding.markAsRead.background = AppCompatResources.getDrawable(requireContext(), R.drawable.mark_as_read_blue)
                 true
             } else {
-                binding.markAsRead.setBackground(resources.getDrawable(R.drawable.mark_as_read_gray))
+                binding.markAsRead.background =  AppCompatResources.getDrawable(requireContext(), R.drawable.mark_as_read_gray)
                 false
             }
 
         })
 
-        binding.trash.setOnClickListener(View.OnClickListener {
-            var dialog = DeleteMessageDialog(requireContext())
-            dialog.show(requireFragmentManager(),"customDialog")
+        binding.trash.setOnClickListener {
+            val dialog = DeleteMessageDialog(requireContext())
+            dialog.show(requireFragmentManager(), "customDialog")
 
-        })
+        }
 
         binding.forInstance.setOnClickListener(View.OnClickListener {
             //TODO Wait for writing, if you don't write delete it

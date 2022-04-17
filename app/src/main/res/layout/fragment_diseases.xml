@@ -201,7 +201,7 @@
             android:orientation="horizontal">
 
             <RelativeLayout
-                android:id="@+id/heartStorke"
+                android:id="@+id/heart_stroke"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_marginEnd="6dp"
