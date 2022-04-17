@@ -28,9 +28,6 @@
             app:enterAnim="@anim/enter_right_to_left"
             android:id="@+id/action_selectUserTypeFragment_to_diseasesFragment"
             app:destination="@id/diseasesFragment" />
-        <action
-            android:id="@+id/action_selectUserTypeFragment_to_application"
-            app:destination="@id/application" />
     </fragment>
     <fragment
         android:id="@+id/diseasesFragment"
@@ -74,7 +71,11 @@
         android:id="@+id/confirmedFragment"
         android:name="com.creativeprojects.medicall.ui.fragment.patient_pages.ConfirmedFragment"
         android:label="fragment_confirmed"
-        tools:layout="@layout/fragment_confirmed" />
+        tools:layout="@layout/fragment_confirmed" >
+        <action
+            android:id="@+id/action_confirmedFragment_to_application"
+            app:destination="@id/application" />
+    </fragment>
     <fragment
         android:id="@+id/OTPFragment"
         android:name="com.creativeprojects.medicall.ui.fragment.patient_pages.OTPFragment"
@@ -87,6 +88,9 @@
         <action
             android:id="@+id/action_OTPFragment_self"
             app:destination="@id/OTPFragment" />
+        <action
+            android:id="@+id/action_OTPFragment_to_continueWithPhoneNumberFragment"
+            app:destination="@id/continueWithPhoneNumberFragment" />
     </fragment>
     <fragment
         android:id="@+id/application"

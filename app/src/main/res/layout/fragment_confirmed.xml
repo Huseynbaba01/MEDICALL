@@ -147,7 +147,7 @@
             android:text="Bağla"
             android:textAllCaps="false"
             android:textSize="20sp"
-            android:id="@+id/Close"
+            android:id="@+id/close"
             android:fontFamily="@font/poppins_medium"
             android:padding="10dp"
             />

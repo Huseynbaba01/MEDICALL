@@ -160,28 +160,23 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
 
 
     private fun addToHistoryItems(){
-        val handler = Handler(Looper.getMainLooper())
+        binding.btnAuto.isEnabled = false
 //        MessageHelper.showProgressDialog(requireContext(), "Getting location info\n\nPlease wait...")
+        val address = MapHelper.getLocationInfo(requireContext(), selectedLocation, 10)
+        val title = address.subThoroughfare + " - " + address.thoroughfare
+        val subtitle = "${address.locality}, ${address.countryName}"
+//        MessageHelper.closeProgressDialog()
+        binding.btnAuto.isEnabled = true
 
-        handler.postDelayed({
-            Log.d("MyTagHere", "addToHistoryItems: 158")
-            val address = MapHelper.getLocationInfo(requireContext(), selectedLocation, 10)
-            val title = address.subThoroughfare + " - " + address.thoroughfare
-            val subtitle = "${address.locality}, ${address.countryName}"
-            Log.d("MyTagHere", "addToHistoryItems: 162")
-//            MessageHelper.closeProgressDialog()
-            Log.d("MyTagHere", "addToHistoryItems: 164")
-
-            addressSelectionViewModel.insertHistoryItem(
-                AddressHistoryItem(
-                    TimeHelper.getCurrentTimeInMillis(),
-                    selectedLocation.latitude,
-                    selectedLocation.longitude,
-                    title,
-                    subtitle
-                )
+        addressSelectionViewModel.insertHistoryItem(
+            AddressHistoryItem(
+                TimeHelper.getCurrentTimeInMillis(),
+                selectedLocation.latitude,
+                selectedLocation.longitude,
+                title,
+                subtitle
             )
-        },100)
+        )
 }
 
 
@@ -200,12 +195,15 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
     }
 
     private fun selectLocation(latLng: LatLng){
+        MessageHelper.showProgressDialog(requireContext(), "Getting location info\n\nPlease wait...")
         selectedLocation = latLng
         MapHelper.clearAllMarkers(googleMap)
         MapHelper.addMarkerTo(selectedLocation, googleMap, requireContext())
+        MessageHelper.closeProgressDialog()
         requireActivity().runOnUiThread {
             MapHelper.animateCameraTo(selectedLocation, googleMap, 1000)
         }
+
     }
 
     override fun onMapLongClick(latlng: LatLng) {

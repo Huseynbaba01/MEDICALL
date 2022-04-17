@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginEnd="30dp"
-    android:backgroundTint="#CE2029"
+    android:backgroundTint="#46ACB9"
     android:layout_marginStart="30dp"
     android:layout_gravity="center"
     app:cardElevation="100dp"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:gravity="center_horizontal"
-            android:text="This is a progress"
+            android:text="This is a progress..."
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />

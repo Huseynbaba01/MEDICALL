@@ -1,6 +1,8 @@
 package com.creativeprojects.medicall.ui.fragment.patient_pages
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,15 +11,10 @@ import androidx.navigation.fragment.findNavController
 import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.FragmentDiseasesBinding
 import com.creativeprojects.medicall.utils.helper.model.Disease
-import com.creativeprojects.medicall.utils.helper.model.DiseaseType.CORONA
-import com.creativeprojects.medicall.utils.helper.model.DiseaseType.BLEEDING
-import com.creativeprojects.medicall.utils.helper.model.DiseaseType.CAR_CRASH
-import com.creativeprojects.medicall.utils.helper.model.DiseaseType.FEVER
-import com.creativeprojects.medicall.utils.helper.model.DiseaseType.DIZZY
-import com.creativeprojects.medicall.utils.helper.model.DiseaseType.HEART_STROKE
+import com.creativeprojects.medicall.utils.helper.model.DiseaseType.*
 
 
-class DiseasesFragment : Fragment() {
+class DiseasesFragment : Fragment(), View.OnFocusChangeListener {
 
 
     private lateinit var binding: FragmentDiseasesBinding
@@ -27,18 +24,14 @@ class DiseasesFragment : Fragment() {
     private val fever = Disease(FEVER)
     private val heartStroke = Disease(HEART_STROKE)
     private val bleeding = Disease(BLEEDING)
+    private val other = Disease(OTHER)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        corona.selected = false
-        fever.selected = false
-        carCrash.selected= false
-        dizzy.selected = false
-        heartStroke.selected = false
-        bleeding.selected = false
         binding = FragmentDiseasesBinding.inflate(inflater)
+        binding.mtEnterReason.editText?.onFocusChangeListener = this
 
         // making  diseases change background when clicked
         binding.corona?.setOnClickListener {
@@ -78,6 +71,7 @@ class DiseasesFragment : Fragment() {
             item.setBackgroundResource(R.drawable.diseases_background)
             false
         }
+        clearTextBox()
     }
 
     private fun clearOtherBesides(disease: Disease){
@@ -107,6 +101,11 @@ class DiseasesFragment : Fragment() {
         }
     }
 
+    private fun clearTextBox(){
+        binding.mtEnterReason.editText?.setText("")
+        binding.mtEnterReason.editText?.clearFocus()
+    }
+
     // return back when arrow clicked
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.arrowLeft?.setOnClickListener {
@@ -120,4 +119,8 @@ class DiseasesFragment : Fragment() {
     }
 
 
+    override fun onFocusChange(et: View?, p1: Boolean) {
+        if (et?.hasFocus() == true)
+            clearOtherBesides(other)
+    }
 }

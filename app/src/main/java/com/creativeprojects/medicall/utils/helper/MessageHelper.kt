@@ -15,6 +15,7 @@ object MessageHelper {
     }
 
     fun closeProgressDialog(){
-        dialog.close()
+        if(dialog.isShowing)
+            dialog.dismiss()
     }
 }

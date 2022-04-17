@@ -21,7 +21,7 @@ class SelectUserTypeFragment : Fragment() {
             findNavController().navigate(SelectUserTypeFragmentDirections.actionSelectUserTypeFragmentToDiseasesFragment())
         }
         binding.cvAsDoctor.setOnClickListener {
-            findNavController().navigate(SelectUserTypeFragmentDirections.actionSelectUserTypeFragmentToApplication())
+            //TODO add doctor side pages here\\
         }
         return binding.root
 
