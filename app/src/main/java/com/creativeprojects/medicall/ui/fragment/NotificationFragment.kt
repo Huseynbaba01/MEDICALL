@@ -1,6 +1,7 @@
 package com.creativeprojects.medicall.ui.fragment
 
 import android.app.Dialog
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.FragmentNotificationBinding
+import com.creativeprojects.medicall.network.cloudMessaging.SendingCloudMessage
 import com.creativeprojects.medicall.network.methods.PushNotification
 import com.creativeprojects.medicall.network.methods.RetrofitInstance
 import com.creativeprojects.medicall.network.network_data.NotificationData
@@ -59,17 +61,7 @@ class NotificationFragment : Fragment() {
         return binding.root
     }
 
-    private fun callNotification() {
-        val title = "Main message"
-        val message = "Ambulance arrived"
-        PushNotification(
-            NotificationData(title,message),
-            TOPIC
-        ).also {
-            sendNotification(it)
-            Log.d(TAG, "callNotification: We are here!..." )
-        }
-    }
+
 
     private fun setClickListeners() {
         binding.returnBackNotification.setOnClickListener(View.OnClickListener {
@@ -98,7 +90,7 @@ class NotificationFragment : Fragment() {
         })
 
         binding.forInstance.setOnClickListener(View.OnClickListener {
-            callNotification()
+            SendingCloudMessage.sendMessage("Ambulance received","Meet if you can!","4/17/2022",R.drawable.ambulance)
         })
 
     }
@@ -117,22 +109,6 @@ class NotificationFragment : Fragment() {
     }
 
 
-    private fun sendNotification(notification:PushNotification)= CoroutineScope(Dispatchers.IO).launch{
-        try{
-            RetrofitInstance.api.postNotification(notification).apply {
-                if(this.isSuccessful){
-                    Log.d(TAG, "sendNotification: ${Gson().toJson(this)}")
-                    Log.d(TAG, "sendNotification: Successful, ${this.isSuccessful}")
-                }else{
-                    Log.d(TAG, "sendNotification: ${this.errorBody().toString()}")
-                    Log.d(TAG, "sendNotification: Unsuccessful, ${this.isSuccessful}")
-                }
-            }
 
-        }catch (e:Exception){
-            Log.d(TAG, "sendNotification: ${e.message.toString()}")
-            Log.d(TAG, "sendNotification: Exception happened!")
-        }
-    }
 
 }

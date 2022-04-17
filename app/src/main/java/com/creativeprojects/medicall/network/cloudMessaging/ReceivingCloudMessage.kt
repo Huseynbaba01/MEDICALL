@@ -7,7 +7,9 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_ONE_SHOT
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.BitmapFactory.decodeResource
 import android.graphics.Color
 import android.os.Build
 import android.util.Log
@@ -23,7 +25,7 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
     private val channelId = "MyChannelId"
     private val channelName = "MyChannelName"
     private lateinit var token:String
-    private val TAG:String = "MyTagHereMain"
+    private val TAG:String = "MyTagHere"
 
 
     override fun onMessageReceived(message: RemoteMessage) {
@@ -44,9 +46,14 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
             .setContentIntent(pendingIntent)
             .setContentTitle(message.data["title"])
             .setContentText(message.data["message"])
+            .setSubText(message.data["date"])
             .setAutoCancel(true)
             .setChannelId(channelId)
             .setSmallIcon(R.drawable.mark_as_read_blue)
+            .setLargeIcon(message.data["largeIcon"]?.let {
+                decodeResource(this.resources,
+                    it.toInt())
+            })
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .build()
 
