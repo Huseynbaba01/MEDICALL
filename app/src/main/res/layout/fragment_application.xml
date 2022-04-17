@@ -17,11 +17,11 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_notifications"
         android:layout_width="wrap_content"
-        app:borderWidth="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:backgroundTint="@color/white"
         android:src="@drawable/bell_light"
+        app:borderWidth="0dp"
         app:tint="@null"
         app:useCompatPadding="true" />
 

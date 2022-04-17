@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavHost
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.FragmentApplicationBinding
 
@@ -28,7 +32,15 @@ class ApplicationFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentApplicationBinding.inflate(inflater, container, false)
+        setClickListeners()
+
         return binding.root
+    }
+
+    private fun setClickListeners() {
+        binding.fabNotifications.setOnClickListener(View.OnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.action_application_to_notificationFragment)
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

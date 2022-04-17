@@ -17,7 +17,7 @@ import com.creativeprojects.medicall.utils.helper.GenericTextWatcher
 import com.creativeprojects.medicall.databinding.FragmentOTPBinding
 import com.creativeprojects.medicall.event.SendPhoneNumberAndCountryCodeEvent
 import com.creativeprojects.medicall.event.SendVerificationCodeEvent
-import com.creativeprojects.medicall.network.MyFirebase
+import com.creativeprojects.medicall.network.methods.MyFirebase
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.i18n.phonenumbers.NumberParseException
@@ -31,7 +31,7 @@ class OTPFragment : BaseFragment() {
     lateinit var verificationId : String
     lateinit var phoneNumber:String
     lateinit var countryCode:String
-    lateinit var firebase:MyFirebase
+    lateinit var firebase: MyFirebase
     lateinit var directions: NavDirections
 
     val TAG="MyTagHere"
