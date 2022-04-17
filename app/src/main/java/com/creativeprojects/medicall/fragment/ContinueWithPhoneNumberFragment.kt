@@ -12,7 +12,7 @@ import com.creativeprojects.medicall.utils.helper.SearchValidation
 import com.creativeprojects.medicall.databinding.FragmentContinueWithPhoneNumberBinding
 import com.creativeprojects.medicall.event.SendPhoneNumberAndCountryCodeEvent
 import com.creativeprojects.medicall.event.StartActionToOTPEvent
-import com.creativeprojects.medicall.network.MyFirebase
+import com.creativeprojects.medicall.network.methods.MyFirebase
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

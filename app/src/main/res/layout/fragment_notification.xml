@@ -47,6 +47,11 @@
                 android:layout_toLeftOf="@+id/trash"
                 android:background="@drawable/mark_as_read_gray"
                 android:drawableTint="@color/black" />
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/markAsRead"
+                android:id="@+id/forInstance"/>
 
         </RelativeLayout>
 

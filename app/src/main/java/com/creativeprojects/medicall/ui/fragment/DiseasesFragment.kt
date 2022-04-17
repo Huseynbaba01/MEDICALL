@@ -11,6 +11,8 @@ import com.creativeprojects.medicall.databinding.FragmentDiseasesBinding
 
 
 class DiseasesFragment : Fragment() {
+
+
     private lateinit var binding: FragmentDiseasesBinding
     private var corona:Boolean? = null
     private var carCrash:Boolean? = null

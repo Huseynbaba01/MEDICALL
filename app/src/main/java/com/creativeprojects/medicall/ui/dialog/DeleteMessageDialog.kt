@@ -1,19 +1,12 @@
 package com.creativeprojects.medicall.ui.dialog
 
-import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.creativeprojects.medicall.R
-import com.creativeprojects.medicall.databinding.ActivityMainBinding.inflate
 import com.creativeprojects.medicall.databinding.DeletemessageDialogBinding
-import com.creativeprojects.medicall.event.CheckListEvent
-import com.creativeprojects.medicall.fragment.BaseFragment
 import org.greenrobot.eventbus.EventBus
 
 class DeleteMessageDialog : DialogFragment {
@@ -24,15 +17,6 @@ class DeleteMessageDialog : DialogFragment {
         this.mContext = mContext
     }
 
-    override fun onStart() {
-        super.onStart()
-        EventBus.getDefault().register(this)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        EventBus.getDefault().unregister(this)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,7 +43,6 @@ class DeleteMessageDialog : DialogFragment {
 
         binding.yesButton.setOnClickListener(View.OnClickListener {
             //TODO delete all figures from the list
-            EventBus.getDefault().postSticky(CheckListEvent())
             dismiss()
         })
     }

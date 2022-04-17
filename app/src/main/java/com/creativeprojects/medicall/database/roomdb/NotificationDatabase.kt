@@ -6,9 +6,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.creativeprojects.medicall.database.dao.NotificationDao
+import com.creativeprojects.medicall.model.NotificationModel
 
 
-@Database(entities = [NotificationDatabase::class], version = 1)
+@Database(entities = [NotificationModel::class], version = 1)
 abstract class NotificationDatabase : RoomDatabase(){
     abstract fun notificationDao():NotificationDao
     companion object{

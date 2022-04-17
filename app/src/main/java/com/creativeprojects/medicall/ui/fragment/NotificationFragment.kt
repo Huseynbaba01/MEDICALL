@@ -2,27 +2,32 @@ package com.creativeprojects.medicall.ui.fragment
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Delete
 import com.creativeprojects.medicall.R
-import com.creativeprojects.medicall.databinding.DeletemessageDialogBinding
 import com.creativeprojects.medicall.databinding.FragmentNotificationBinding
-import com.creativeprojects.medicall.event.CheckListEvent
-import com.creativeprojects.medicall.ui.adapter.RecycNotificationAdapter
+import com.creativeprojects.medicall.network.methods.PushNotification
+import com.creativeprojects.medicall.network.methods.RetrofitInstance
+import com.creativeprojects.medicall.network.network_data.NotificationData
 import com.creativeprojects.medicall.ui.dialog.DeleteMessageDialog
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.lang.Exception
+
+const val TOPIC = "/topics/myTopic"
+lateinit var token:String
 
 class NotificationFragment : Fragment() {
     lateinit var binding: FragmentNotificationBinding
     var isRead: Boolean = false
     lateinit var dialog: Dialog
+    private val TAG = "MyTagHere"
 
 
 
@@ -34,11 +39,36 @@ class NotificationFragment : Fragment() {
         binding = FragmentNotificationBinding.inflate(inflater)
         dialog = Dialog(requireContext())
 
+
+        //TODO find library for FirebaseInstanceId
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {myToken ->
+            if (myToken.isSuccessful){
+                Log.d(
+                    TAG,
+                    "MainToken: ${myToken.result}"
+                )
+                token = myToken.result
+            }
+        }
+
+        FirebaseMessaging.getInstance().subscribeToTopic(TOPIC)
+
+
         setClickListeners()
 
-
-
         return binding.root
+    }
+
+    private fun callNotification() {
+        val title = "Main message"
+        val message = "Ambulance arrived"
+        PushNotification(
+            NotificationData(title,message),
+            TOPIC
+        ).also {
+            sendNotification(it)
+            Log.d(TAG, "callNotification: We are here!..." )
+        }
     }
 
     private fun setClickListeners() {
@@ -63,10 +93,14 @@ class NotificationFragment : Fragment() {
 
         })
 
-    }
+        binding.forInstance.setOnClickListener(View.OnClickListener {
+            //TODO Wait for writing, if you don't write delete it
+        })
 
-    @Subscribe(threadMode = ThreadMode.ASYNC,sticky = true)
-    private fun onCheckListEvent(checkListEvent: CheckListEvent ){
+        binding.forInstance.setOnClickListener(View.OnClickListener {
+            callNotification()
+        })
+
     }
 
     private fun checkEmptiness(){
@@ -80,6 +114,25 @@ class NotificationFragment : Fragment() {
 //        binding.myRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
 //        binding.myRecyclerView.adapter = RecycNotificationAdapter()
 
+    }
+
+
+    private fun sendNotification(notification:PushNotification)= CoroutineScope(Dispatchers.IO).launch{
+        try{
+            RetrofitInstance.api.postNotification(notification).apply {
+                if(this.isSuccessful){
+                    Log.d(TAG, "sendNotification: ${Gson().toJson(this)}")
+                    Log.d(TAG, "sendNotification: Successful, ${this.isSuccessful}")
+                }else{
+                    Log.d(TAG, "sendNotification: ${this.errorBody().toString()}")
+                    Log.d(TAG, "sendNotification: Unsuccessful, ${this.isSuccessful}")
+                }
+            }
+
+        }catch (e:Exception){
+            Log.d(TAG, "sendNotification: ${e.message.toString()}")
+            Log.d(TAG, "sendNotification: Exception happened!")
+        }
     }
 
 }
