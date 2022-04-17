@@ -1,22 +1,17 @@
 package com.creativeprojects.medicall.network.cloudMessaging
 
-import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_ONE_SHOT
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.BitmapFactory.decodeResource
 import android.graphics.Color
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.creativeprojects.medicall.R
-import com.creativeprojects.medicall.ui.fragment.NotificationFragment
+import com.creativeprojects.medicall.ui.fragment.general.NotificationFragment
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import kotlin.random.Random

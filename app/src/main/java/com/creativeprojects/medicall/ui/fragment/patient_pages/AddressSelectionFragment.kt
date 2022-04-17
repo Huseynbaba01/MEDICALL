@@ -161,7 +161,7 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
 
     private fun addToHistoryItems(){
         val handler = Handler(Looper.getMainLooper())
-        MessageHelper.showProgressDialog(requireContext(), "Getting location info\n\nPlease wait...")
+//        MessageHelper.showProgressDialog(requireContext(), "Getting location info\n\nPlease wait...")
 
         handler.postDelayed({
             Log.d("MyTagHere", "addToHistoryItems: 158")
@@ -169,7 +169,7 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
             val title = address.subThoroughfare + " - " + address.thoroughfare
             val subtitle = "${address.locality}, ${address.countryName}"
             Log.d("MyTagHere", "addToHistoryItems: 162")
-            MessageHelper.closeProgressDialog()
+//            MessageHelper.closeProgressDialog()
             Log.d("MyTagHere", "addToHistoryItems: 164")
 
             addressSelectionViewModel.insertHistoryItem(

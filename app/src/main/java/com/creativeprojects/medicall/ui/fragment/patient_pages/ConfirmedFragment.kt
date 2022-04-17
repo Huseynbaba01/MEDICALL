@@ -1,4 +1,4 @@
-package com.creativeprojects.medicall.fragment
+package com.creativeprojects.medicall.ui.fragment.patient_pages
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,7 +15,7 @@ class ConfirmedFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding= FragmentConfirmedBinding.inflate(inflater)
 
         return binding.root

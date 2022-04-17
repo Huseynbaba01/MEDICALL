@@ -1,4 +1,4 @@
-package com.creativeprojects.medicall.fragment
+package com.creativeprojects.medicall.ui.fragment.patient_pages
 
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +13,7 @@ import com.creativeprojects.medicall.databinding.FragmentContinueWithPhoneNumber
 import com.creativeprojects.medicall.event.SendPhoneNumberAndCountryCodeEvent
 import com.creativeprojects.medicall.event.StartActionToOTPEvent
 import com.creativeprojects.medicall.network.methods.MyFirebase
+import com.creativeprojects.medicall.ui.fragment.general.BaseFragment
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

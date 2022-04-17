@@ -1,4 +1,4 @@
-package com.creativeprojects.medicall.fragment
+package com.creativeprojects.medicall.ui.fragment.patient_pages
 
 import android.annotation.SuppressLint
 import android.os.Build
@@ -18,6 +18,7 @@ import com.creativeprojects.medicall.databinding.FragmentOTPBinding
 import com.creativeprojects.medicall.event.SendPhoneNumberAndCountryCodeEvent
 import com.creativeprojects.medicall.event.SendVerificationCodeEvent
 import com.creativeprojects.medicall.network.methods.MyFirebase
+import com.creativeprojects.medicall.ui.fragment.general.BaseFragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.i18n.phonenumbers.NumberParseException

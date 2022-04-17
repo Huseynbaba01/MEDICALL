@@ -15,10 +15,9 @@ import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
-import com.creativeprojects.medicall.fragment.ContinueWithPhoneNumberFragment
 import com.creativeprojects.medicall.event.SendVerificationCodeEvent
 import com.creativeprojects.medicall.event.StartActionToOTPEvent
-import com.creativeprojects.medicall.ui.fragment.NotificationFragment
+import com.creativeprojects.medicall.ui.fragment.patient_pages.ContinueWithPhoneNumberFragment
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.google.firebase.messaging.FirebaseMessagingService
