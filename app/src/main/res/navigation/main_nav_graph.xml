@@ -28,6 +28,9 @@
             app:enterAnim="@anim/enter_right_to_left"
             android:id="@+id/action_selectUserTypeFragment_to_diseasesFragment"
             app:destination="@id/diseasesFragment" />
+        <action
+            android:id="@+id/action_selectUserTypeFragment_to_doctorLoginFragment"
+            app:destination="@id/doctorLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/diseasesFragment"
@@ -105,4 +108,9 @@
         android:name="com.creativeprojects.medicall.ui.fragment.general.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/doctorLoginFragment"
+        android:name="com.creativeprojects.medicall.ui.fragment.doctor_pages.DoctorLoginFragment"
+        android:label="fragment_doctor_login"
+        tools:layout="@layout/fragment_doctor_login" />
 </navigation>

@@ -9,5 +9,10 @@
     <string name="title_approximate_reaching_date">Təxmini gəlmə müddəti</string>
     <string name="title_minute"> dəq</string>
     <string name="deleting_message">Bildirişləri silmək istədiyinizdən əminsinizmi?</string>
+    <string name="hint_email">E-poçt ünvanı</string>
+    <string name="hint_password">Şifrə</string>
+    <string name="label_greeting_doctor">Sizi təkrar görməyimizə şadıq</string>
+    <string name="hint_forgot_password"><u>Şifrəni unutmusunuz?</u></string>
+    <string name="label_log_in">Daxil ol</string>
 
 </resources>
