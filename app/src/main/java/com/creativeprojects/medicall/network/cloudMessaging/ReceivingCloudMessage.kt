@@ -11,6 +11,7 @@ import android.graphics.Color
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.creativeprojects.medicall.R
+import com.creativeprojects.medicall.ui.activity.MainActivity
 import com.creativeprojects.medicall.ui.fragment.general.NotificationFragment
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -27,9 +28,10 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
         super.onMessageReceived(message)
         Log.d(TAG, "onMessageReceived: MessageReceived")
 
-        val intent = Intent(this, NotificationFragment::class.java)
+        val intent = Intent(applicationContext, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP )
         val pendingIntent = PendingIntent.getActivity(this,0,intent, FLAG_ONE_SHOT)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationId = Random.nextInt()
