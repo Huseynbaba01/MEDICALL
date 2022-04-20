@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.FragmentDoctorLoginBinding
 
@@ -16,7 +17,9 @@ class DoctorLoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDoctorLoginBinding.inflate(inflater, container, false)
-
+        binding.login.setOnClickListener{
+            findNavController().navigate(DoctorLoginFragmentDirections.actionDoctorLoginFragmentToDoctorMainactivity())
+        }
         return binding.root
     }
 }

@@ -11,8 +11,8 @@ import com.creativeprojects.medicall.model.NotificationModel
 interface NotificationDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNotificationDatas(notificationModel: NotificationModel)
+    fun insertNotificationData(notificationModel: NotificationModel)
 
     @Query("SELECT * FROM notification_table ORDER BY id DESC")
-    fun getAllNotificationDatas():List<NotificationModel>
+    fun getAllNotificationData():List<NotificationModel>
 }

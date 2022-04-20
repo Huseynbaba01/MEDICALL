@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.fragment.doctor_pages.EditProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/input_layouts"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/login_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/user_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="-35dp"
+            android:layout_marginTop="-35dp"
+            android:src="@drawable/edit_icon"
+            app:backgroundTint="#746F6F"
+            app:fabCustomSize="35dp"
+            app:fabSize="normal"
+            app:layout_constraintStart_toEndOf="@id/login_icon"
+            app:layout_constraintTop_toBottomOf="@id/login_icon"
+            app:maxImageSize="40dp"
+            app:tint="@android:color/white"
+            app:useCompatPadding="false" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/input_layouts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/hint_name_surname"
+            android:textColor="@color/text_grey"
+            android:textSize="16sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mail_input_layout"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:boxCornerRadiusBottomEnd="6dp"
+            app:boxCornerRadiusBottomStart="6dp"
+            app:boxCornerRadiusTopEnd="6dp"
+            app:boxCornerRadiusTopStart="6dp"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/hint_name_surname"
+                android:lines="1"
+                android:text="Kamran Əmiraslanov"
+                android:textColor="@color/dark_black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/hint_working_hospital"
+            android:textColor="@color/text_grey"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_grey">
+
+            <Spinner
+                android:id="@+id/hospital_items"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="56dp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

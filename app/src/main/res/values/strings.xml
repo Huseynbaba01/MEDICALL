@@ -1,10 +1,12 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <string name="app_name" translatable="false">HELPTIX</string>
     <string name="apps_purpose" translatable="false">Our goal is to make medical services more accessible.</string>
     <string name="yenidenGonder" translatable="false"><u>Yenidən göndər</u></string> <!--Arif burda adlandirmaya diqqet edek zehmet olmasa:)-->
     <string name="title_message">Mesaj göndər</string>
     <string name="title_call">Zəng et</string>
     <string name="title_cancel">Ləğv et</string>
+    <string name="title_search" >Axtar</string>
     <string name="title_first_aid">İlk yardım</string>
     <string name="title_approximate_reaching_date">Təxmini gəlmə müddəti</string>
     <string name="title_minute"> dəq</string>
@@ -14,5 +16,21 @@
     <string name="label_greeting_doctor">Sizi təkrar görməyimizə şadıq</string>
     <string name="hint_forgot_password"><u>Şifrəni unutmusunuz?</u></string>
     <string name="label_log_in">Daxil ol</string>
+    <string name="title_activity_doctor_main">DoctorMainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_name_surname">Ad Soyad</string>
+    <string name="hint_working_hospital">İşlədiyiniz xəstəxana</string>
+    <string name="label_requests">Müraciətlər</string>
+    <string name="title_accept">Qəbul et</string>
+
+    <string-array name="sample_hospitals">
+        <item>1 saylı şəhər klinik xəstəxanası</item>
+        <item>5 saylı şəhər klinik xəstəxanası</item>
+        <item>Abşeron rayon mərkəzi xəstəxanası</item>
+    </string-array>
 
 </resources>

@@ -111,6 +111,7 @@
         android:layout_height="wrap_content"
         android:text="@string/label_log_in"
         app:cornerRadius="6dp"
+        android:id="@+id/login"
         android:textSize="16sp"
         android:padding="13dp"
         android:fontFamily="@font/poppins_regular"

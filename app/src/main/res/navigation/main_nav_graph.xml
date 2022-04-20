@@ -112,5 +112,14 @@
         android:id="@+id/doctorLoginFragment"
         android:name="com.creativeprojects.medicall.ui.fragment.doctor_pages.DoctorLoginFragment"
         android:label="fragment_doctor_login"
-        tools:layout="@layout/fragment_doctor_login" />
+        tools:layout="@layout/fragment_doctor_login" >
+        <action
+            android:id="@+id/action_doctorLoginFragment_to_doctorMainactivity"
+            app:destination="@id/doctorMainactivity" />
+    </fragment>
+
+    <activity android:id="@+id/doctorMainactivity"
+        android:name="com.creativeprojects.medicall.ui.activity.DoctorMainActivity"
+        android:label="doctor_main_a2ctivity"
+        tools:layout="@layout/activity_doctor_main"/>
 </navigation>

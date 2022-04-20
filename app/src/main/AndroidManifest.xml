@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.creativeprojects.medicall">
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
-<!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
         android:allowBackup="true"
@@ -14,37 +13,43 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MEDICALL" >
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        android:theme="@style/Theme.MEDICALL">
+        <activity
+            android:name=".ui.activity.DoctorMainActivity"
+            android:exported="false" />
 
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyByi3_OogQEV1dySJT22SWxIHK3940rt3M" />
 
-        <service android:name=".network.cloudMessaging.ReceivingCloudMessage"
-            android:permission="com.google.android.c2dm.permission.SEND"
-            android:exported="false">
+        <service
+            android:name=".network.cloudMessaging.ReceivingCloudMessage"
+            android:exported="false"
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-<!--                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>-->
-<!--                <action android:name="com.google.firebase.RECEIVE"/>-->
-                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <!-- <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/> -->
+                <!-- <action android:name="com.google.firebase.RECEIVE"/> -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
-
         </service>
 
         <activity
             android:name=".ui.activity.MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>
