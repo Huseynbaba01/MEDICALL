@@ -8,7 +8,7 @@
         android:id="@+id/home"
         android:name="com.creativeprojects.medicall.ui.fragment.doctor_pages.DoctorHomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/doctor_home_fragment" />
     <fragment
         android:id="@+id/map"
         android:name="com.creativeprojects.medicall.ui.fragment.patient_pages.ApplicationFragment"
