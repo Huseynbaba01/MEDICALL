@@ -24,6 +24,11 @@
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_o_t_p.xml" value="0.22" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_select_user_type.xml" value="0.14" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/listitem_address_history.xml" value="0.25" />
+        <entry key="..\:/Users/Arif/MEDICALL/app/src/main/res/drawable/diseases_background.xml" value="0.2595" />
+        <entry key="..\:/Users/Arif/MEDICALL/app/src/main/res/drawable/done_image.xml" value="0.2595" />
+        <entry key="..\:/Users/Arif/MEDICALL/app/src/main/res/layout/deletemessage_dialog.xml" value="0.2" />
+        <entry key="..\:/Users/Arif/MEDICALL/app/src/main/res/layout/fragment_notification.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Arif/MEDICALL/app/src/main/res/layout/recycler_notification.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

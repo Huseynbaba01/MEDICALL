@@ -1,6 +1,8 @@
 package com.creativeprojects.medicall.ui.adapter;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.creativeprojects.medicall.R;
+import com.creativeprojects.medicall.model.NotificationModel;
 
 import java.util.List;
 
 public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.ViewHolder>{
-    List<Bitmap> myPictures;
-    List<String> myNotificationMessages;
-    List<String> dateFormat;
+    List<NotificationModel> notificationList;
+    Context mContext;
 
-    public NotificationsAdapter(List<Bitmap> myPictures, List<String> myNotificationMessages, List<String> dateFormat) {
-        this.myPictures = myPictures;
-        this.myNotificationMessages = myNotificationMessages;
-        this.dateFormat = dateFormat;
+    public NotificationsAdapter(List<NotificationModel> notificationList,Context context) {
+        this.notificationList = notificationList;
+        mContext = context;
     }
 
     @NonNull
@@ -34,14 +35,14 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.mainImage.setImageBitmap(myPictures.get(position));
-        holder.mainText.setText(myNotificationMessages.get(position));
-        holder.date.setText(dateFormat.get(position));
+        holder.mainImage.setImageBitmap(BitmapFactory.decodeResource(mContext.getResources(),notificationList.get(position).getImage()));
+        holder.mainText.setText(notificationList.get(position).getNotificationMessage());
+        holder.date.setText(notificationList.get(position).getNotificationDate());
     }
 
     @Override
     public int getItemCount() {
-        return myNotificationMessages.size();
+        return notificationList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

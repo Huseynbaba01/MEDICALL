@@ -2,27 +2,29 @@ package com.creativeprojects.medicall.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.creativeprojects.medicall.database.roomdb.NotificationDatabase
 import com.creativeprojects.medicall.databinding.DeletemessageDialogBinding
+import com.creativeprojects.medicall.databinding.FragmentNotificationBinding
+import com.creativeprojects.medicall.ui.fragment.general.NotificationFragment
+import com.creativeprojects.medicall.utils.mock.DoAsyncTask
 import org.greenrobot.eventbus.EventBus
 
-class DeleteMessageDialog : DialogFragment {
-    var mContext:Context
+class DeleteMessageDialog(binding: FragmentNotificationBinding) : DialogFragment() {
     lateinit var binding :DeletemessageDialogBinding
-
-    constructor(mContext: Context) : super() {
-        this.mContext = mContext
-    }
+    private val mBinding = binding
+    private val TAG = "DeleteTag"
 
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = DeletemessageDialogBinding.inflate(inflater)
@@ -42,7 +44,13 @@ class DeleteMessageDialog : DialogFragment {
         })
 
         binding.yesButton.setOnClickListener(View.OnClickListener {
-            //TODO delete all figures from the list
+            DoAsyncTask{
+                activity?.let { it1 -> NotificationDatabase.getDatabase(it1.application).notificationDao().deleteAllNotifications() }
+
+            }.run()
+            mBinding.myRecyclerView.visibility = View.GONE
+            mBinding.forEmptyPicture.visibility = View.VISIBLE
+            Log.d(TAG, "setClickListeners: View is changed")
             dismiss()
         })
     }

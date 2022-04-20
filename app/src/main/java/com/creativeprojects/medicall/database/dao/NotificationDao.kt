@@ -1,9 +1,6 @@
 package com.creativeprojects.medicall.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.creativeprojects.medicall.model.NotificationModel
 
 
@@ -11,8 +8,12 @@ import com.creativeprojects.medicall.model.NotificationModel
 interface NotificationDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNotificationDatas(notificationModel: NotificationModel)
+    fun insertNotificationData(notificationModel: NotificationModel)
 
-    @Query("SELECT * FROM notification_table ORDER BY id DESC")
-    fun getAllNotificationDatas():List<NotificationModel>
+    @Query("SELECT * FROM notification_table ORDER BY notificationDate DESC")
+    fun getAllNotificationData():List<NotificationModel>
+
+
+    @Query("DELETE  FROM notification_table")
+    fun deleteAllNotifications()
 }

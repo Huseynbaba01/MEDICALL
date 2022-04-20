@@ -11,6 +11,8 @@ import android.graphics.Color
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.creativeprojects.medicall.R
+import com.creativeprojects.medicall.database.roomdb.NotificationDatabase
+import com.creativeprojects.medicall.model.NotificationModel
 import com.creativeprojects.medicall.ui.activity.MainActivity
 import com.creativeprojects.medicall.ui.fragment.general.NotificationFragment
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -21,7 +23,7 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
     private val channelId = "MyChannelId"
     private val channelName = "MyChannelName"
     private lateinit var token:String
-    private val TAG:String = "MyTagHere"
+    private  val TAG = "MyTagHere"
 
 
     override fun onMessageReceived(message: RemoteMessage) {
@@ -32,6 +34,7 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP )
         val pendingIntent = PendingIntent.getActivity(this,0,intent, FLAG_ONE_SHOT)
 
+        addNotificationToLocalDatabase(message)
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationId = Random.nextInt()
@@ -55,6 +58,23 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
             .build()
 
         notificationManager.notify(notificationId,notification)
+
+    }
+
+    private fun addNotificationToLocalDatabase(message: RemoteMessage) {
+
+
+        NotificationDatabase.getDatabase(application).notificationDao().insertNotificationData(
+            message.data["largeIcon"]?.let {
+                NotificationModel(message.data["date"].toString(),it.toInt(),message.data["message"].toString(),message.data["title"].toString())
+            }!!
+        )
+
+        showOnRecyclerView()
+    }
+
+    private fun showOnRecyclerView() {
+        //TODO Show on notificationList
 
     }
 

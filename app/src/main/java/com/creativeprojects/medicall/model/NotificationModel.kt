@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "notification_table")
 class NotificationModel(
-    @PrimaryKey var id:Int,
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    var image: ByteArray,
+    @PrimaryKey
+    var notificationDate:String,
+    var image:Int,
     var notificationMessage:String,
-    var notificationDate:String
+    var title:String
     )
