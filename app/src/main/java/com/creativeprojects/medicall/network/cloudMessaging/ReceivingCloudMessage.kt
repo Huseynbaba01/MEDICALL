@@ -12,11 +12,13 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.database.roomdb.NotificationDatabase
+import com.creativeprojects.medicall.event.SendUniqueItemEvent
 import com.creativeprojects.medicall.model.NotificationModel
 import com.creativeprojects.medicall.ui.activity.MainActivity
 import com.creativeprojects.medicall.ui.fragment.general.NotificationFragment
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import org.greenrobot.eventbus.EventBus
 import kotlin.random.Random
 
 class ReceivingCloudMessage: FirebaseMessagingService() {
@@ -24,6 +26,12 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
     private val channelName = "MyChannelName"
     private lateinit var token:String
     private  val TAG = "MyTagHere"
+
+    override fun onStart(intent: Intent?, startId: Int) {
+        super.onStart(intent, startId)
+        EventBus.getDefault().register(true)
+    }
+
 
 
     override fun onMessageReceived(message: RemoteMessage) {
@@ -65,17 +73,17 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
 
 
         NotificationDatabase.getDatabase(application).notificationDao().insertNotificationData(
-            message.data["largeIcon"]?.let {
-                NotificationModel(message.data["date"].toString(),it.toInt(),message.data["message"].toString(),message.data["title"].toString())
-            }!!
+            NotificationModel(0,message.data["date"].toString(),message.data["largeIcon"]!!.toInt(),message.data["message"].toString(),message.data["title"].toString(),false)
         )
 
-        showOnRecyclerView()
+        showOnRecyclerView(message)
     }
 
-    private fun showOnRecyclerView() {
+    private fun showOnRecyclerView(message: RemoteMessage) {
         //TODO Show on notificationList
-
+        EventBus.getDefault().postSticky(
+                SendUniqueItemEvent(message.data["date"].toString(),message.data["largeIcon"]!!.toInt(),message.data["message"].toString(),message.data["title"].toString())
+        )
     }
 
 

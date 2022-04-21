@@ -16,4 +16,12 @@ interface NotificationDao {
 
     @Query("DELETE  FROM notification_table")
     fun deleteAllNotifications()
+
+    @Query("Update notification_table set read='true'")
+    fun updateAllRead()
+
+    @Query("Update notification_table set read='true' where id=:position")
+    fun updateSingleRead(position:Int)
+
+
 }

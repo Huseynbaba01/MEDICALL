@@ -19,6 +19,7 @@ abstract class NotificationDatabase : RoomDatabase(){
 
         fun getDatabase(application: Application) : NotificationDatabase{
 
+            Log.d("MyTagHere", "getDatabase: fifthPlace")
             if(INSTANCE != null){
                 return INSTANCE!!
             }

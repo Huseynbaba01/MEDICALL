@@ -7,10 +7,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "notification_table")
-class NotificationModel(
-    @PrimaryKey
+data class NotificationModel(
+    @PrimaryKey(autoGenerate = true)
+    var id:Int,
     var notificationDate:String,
     var image:Int,
     var notificationMessage:String,
-    var title:String
+    var title:String,
+    var read:Boolean
     )
