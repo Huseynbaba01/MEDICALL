@@ -18,5 +18,7 @@
     <color name="green">#56B845</color>
     <color name="secondary_sky_blue">#20A0D8</color>
     <color name="dark_black">#1A1A1A</color>
+    <color name="status_yellow">#FAF013</color>
+    <color name="status_green">@color/green</color>
 
 </resources>

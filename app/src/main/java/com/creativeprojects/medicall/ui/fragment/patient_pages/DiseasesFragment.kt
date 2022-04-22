@@ -62,7 +62,7 @@ class DiseasesFragment : Fragment(), View.OnFocusChangeListener {
 
     private fun selectItem(item: View, disease: Disease){
         disease.selected = if(!disease.selected) {
-            clearOtherBesides(disease)
+            clearOthersBesides(disease)
             item.setBackgroundResource(R.drawable.diseases_clicked_background)
             true
         } else {
@@ -72,7 +72,7 @@ class DiseasesFragment : Fragment(), View.OnFocusChangeListener {
         clearTextBox()
     }
 
-    private fun clearOtherBesides(disease: Disease){
+    private fun clearOthersBesides(disease: Disease){
         if(disease != corona) {
             binding.corona?.setBackgroundResource(R.drawable.diseases_background)
             corona.selected = false
@@ -119,6 +119,6 @@ class DiseasesFragment : Fragment(), View.OnFocusChangeListener {
 
     override fun onFocusChange(et: View?, p1: Boolean) {
         if (et?.hasFocus() == true)
-            clearOtherBesides(other)
+            clearOthersBesides(other)
     }
 }

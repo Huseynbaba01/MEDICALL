@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/poppins_medium"
-            android:text="Müraciətin səbəbini seçin"
+            android:text="@string/select_request_reason"
             android:textColor="@color/text_black"
             android:textSize="16sp" />
     </RelativeLayout>
@@ -73,7 +73,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Koronavirus "
+                    android:text="@string/label_coronavirus"
                     android:textColor="@color/text_black"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -108,7 +108,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Avtomobil qəzası"
+                    android:text="@string/label_car_crash"
                     android:textColor="@color/text_black"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -152,7 +152,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Huşunu itirmə"
+                    android:text="@string/label_dizzy"
                     android:textColor="@color/text_black"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -187,7 +187,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Yüksək hərarət"
+                    android:text="@string/label_fever"
                     android:textColor="@color/text_black"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -230,7 +230,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Ürək tutuması"
+                    android:text="@string/label_heart_stroke"
                     android:textColor="@color/text_black"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -266,7 +266,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Qanaxma"
+                    android:text="@string/label_bleeding"
                     android:textColor="@color/text_black"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -290,7 +290,7 @@
             android:layout_height="wrap_content"
 
             android:fontFamily="@font/poppins_medium"
-            android:text="Digər"
+            android:text="@string/label_other"
             android:textColor="@color/text_black"
             android:textSize="16sp" />
 
@@ -313,7 +313,7 @@
                 android:backgroundTint="@color/main_blue"
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="start"
-                android:hint="Səbəbi daxil edin"
+                android:hint="@string/label_enter_reason"
                 android:textAlignment="textStart"
                 android:textColor="@color/text_black"
                 android:textSize="14sp" />
@@ -331,7 +331,7 @@
             android:focusable="true"
             android:fontFamily="@font/poppins_medium"
             android:padding="13dp"
-            android:text="Səbəbi Təsdiq edin"
+            android:text="@string/label_confirm_reason"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"

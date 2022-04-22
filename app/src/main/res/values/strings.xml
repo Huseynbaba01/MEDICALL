@@ -26,6 +26,20 @@
     <string name="hint_working_hospital">İşlədiyiniz xəstəxana</string>
     <string name="label_requests">Müraciətlər</string>
     <string name="title_accept">Qəbul et</string>
+    <string name="title_waiting">Gözləmədə</string>
+    <string name="title_accepted">Qəbul edildi</string>
+    <string name="title_been_accepted">Qəbul edilib</string>
+    <string name="title_end_request">Müraciəti bitir</string>
+    <string name="label_dizzy">Huşunu itirmə</string>
+    <string name="label_fever">Yüksək hərarət</string>
+    <string name="label_heart_stroke">Ürək tutuması</string>
+    <string name="label_bleeding">Qanaxma</string>
+    <string name="label_other">Digər</string>
+    <string name="label_enter_reason">Səbəbi daxil edin</string>
+    <string name="label_confirm_reason">Səbəbi Təsdiq edin</string>
+    <string name="label_car_crash">Avtomobil qəzası</string>
+    <string name="label_coronavirus">Koronavirus</string>
+    <string name="select_request_reason">Müraciətin səbəbini seçin</string>
 
     <string-array name="sample_hospitals">
         <item>1 saylı şəhər klinik xəstəxanası</item>
