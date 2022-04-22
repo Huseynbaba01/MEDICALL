@@ -40,6 +40,8 @@
     <string name="label_car_crash">Avtomobil qəzası</string>
     <string name="label_coronavirus">Koronavirus</string>
     <string name="select_request_reason">Müraciətin səbəbini seçin</string>
+    <string name="label_no">Xeyr</string>
+    <string name="label_yes">Bəli</string>
 
     <string-array name="sample_hospitals">
         <item>1 saylı şəhər klinik xəstəxanası</item>

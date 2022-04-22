@@ -55,7 +55,7 @@
             <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/cancel_icon" />
+                android:src="@drawable/ic_cancel_icon" />
 
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
