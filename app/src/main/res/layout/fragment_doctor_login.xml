@@ -52,71 +52,73 @@
 
     <LinearLayout
         android:id="@+id/input_layouts"
-        android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_marginBottom="16dp"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mail_input_layout"
             style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
-            android:id="@+id/mail_input_layout"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:boxCornerRadiusBottomEnd="6dp"
             app:boxCornerRadiusBottomStart="6dp"
-            app:hintEnabled="false"
             app:boxCornerRadiusTopEnd="6dp"
-            app:boxCornerRadiusTopStart="6dp">
+            app:boxCornerRadiusTopStart="6dp"
+            app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:fontFamily="@font/poppins_medium"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_black"
-                android:hint="@string/hint_email" />
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/hint_email"
+                android:textColor="@color/text_black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_input_layout"
             style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
-            app:hintEnabled="false"
-            android:id="@+id/password_input_layout"
             android:layout_height="wrap_content"
             app:boxCornerRadiusBottomEnd="6dp"
             app:boxCornerRadiusBottomStart="6dp"
             app:boxCornerRadiusTopEnd="6dp"
-            app:boxCornerRadiusTopStart="6dp">
+            app:boxCornerRadiusTopStart="6dp"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:textColor="@color/text_black"
-                android:fontFamily="@font/poppins_medium"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_password" />
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:textColor="@color/text_black" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/input_layouts"
-        android:textSize="14sp"
-        android:textColor="@color/main_blue"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/hint_forgot_password"
-        android:layout_height="wrap_content"/>
+        android:textColor="@color/main_blue"
+        android:textSize="14sp" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/label_log_in"
-        app:cornerRadius="6dp"
-        android:id="@+id/login"
-        android:textSize="16sp"
-        android:padding="13dp"
-        android:fontFamily="@font/poppins_regular"
-        android:textAllCaps="false"
         android:layout_alignParentBottom="true"
-        />
+        android:fontFamily="@font/poppins_regular"
+        android:padding="13dp"
+        android:text="@string/label_log_in"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:cornerRadius="6dp" />
 
 </RelativeLayout>

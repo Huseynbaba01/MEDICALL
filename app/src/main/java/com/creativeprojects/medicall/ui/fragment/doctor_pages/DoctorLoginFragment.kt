@@ -11,6 +11,8 @@ import com.creativeprojects.medicall.databinding.FragmentDoctorLoginBinding
 
 class DoctorLoginFragment : Fragment() {
     private lateinit var binding: FragmentDoctorLoginBinding
+    private val userName = "Doctor"
+    private val password = "121212"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,7 +20,10 @@ class DoctorLoginFragment : Fragment() {
     ): View {
         binding = FragmentDoctorLoginBinding.inflate(inflater, container, false)
         binding.login.setOnClickListener{
-            findNavController().navigate(DoctorLoginFragmentDirections.actionDoctorLoginFragmentToDoctorMainactivity())
+            if(binding.mailInputLayout.editText?.text.toString() == userName && binding.passwordInputLayout.editText?.text.toString() == password)
+                findNavController().navigate(DoctorLoginFragmentDirections.actionDoctorLoginFragmentToDoctorMainactivity())
+            else
+                binding.passwordInputLayout.error = "İstifadəçi adı və ya şifrə yanlışdır."
         }
         return binding.root
     }

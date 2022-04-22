@@ -102,7 +102,7 @@
                 android:layout_marginEnd="5dp"
                 app:cardBackgroundColor="@color/status_yellow"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
+                app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="@id/card_status"
                 app:layout_constraintEnd_toEndOf="@id/card_status"
                 app:layout_constraintTop_toTopOf="@id/card_status" />

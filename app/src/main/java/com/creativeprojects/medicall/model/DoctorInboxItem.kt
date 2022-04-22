@@ -8,7 +8,7 @@ import com.creativeprojects.medicall.utils.helper.model.DoctorInboxStatus
 @Entity(tableName = "doctor_inbox_database")
 data class DoctorInboxItem(
     @PrimaryKey val date: Long,
-    val status: DoctorInboxStatus,
+    var status: DoctorInboxStatus,
     val address: String,
     val cause: DiseaseType,
     val message: String?
