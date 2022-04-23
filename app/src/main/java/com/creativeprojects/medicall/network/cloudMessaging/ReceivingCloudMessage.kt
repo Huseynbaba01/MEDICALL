@@ -16,6 +16,7 @@ import com.creativeprojects.medicall.event.SendUniqueItemEvent
 import com.creativeprojects.medicall.model.NotificationModel
 import com.creativeprojects.medicall.ui.activity.MainActivity
 import com.creativeprojects.medicall.ui.fragment.general.NotificationFragment
+import com.creativeprojects.medicall.utils.helper.CommonHelper
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import org.greenrobot.eventbus.EventBus
@@ -42,12 +43,16 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP )
         val pendingIntent = PendingIntent.getActivity(this,0,intent, FLAG_ONE_SHOT)
 
+
+
         addNotificationToLocalDatabase(message)
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationId = Random.nextInt()
 
         createNotificationChannel(notificationManager)
+
+
 
 
         val notification = NotificationCompat.Builder(this,channelId)
@@ -73,7 +78,7 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
 
 
         NotificationDatabase.getDatabase(application).notificationDao().insertNotificationData(
-            NotificationModel(0,message.data["date"].toString(),message.data["largeIcon"]!!.toInt(),message.data["message"].toString(),message.data["title"].toString(),false)
+            NotificationModel(0,message.data["date"].toString(),message.data["largeIcon"]!!.toInt(),message.data["message"].toString(),message.data["title"].toString(),"false")
         )
 
         showOnRecyclerView(message)

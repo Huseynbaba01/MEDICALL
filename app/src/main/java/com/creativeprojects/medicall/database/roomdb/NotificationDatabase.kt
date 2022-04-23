@@ -9,7 +9,7 @@ import com.creativeprojects.medicall.database.dao.NotificationDao
 import com.creativeprojects.medicall.model.NotificationModel
 
 
-@Database(entities = [NotificationModel::class], version = 1)
+@Database(entities = [NotificationModel::class], version = 5)
 abstract class NotificationDatabase : RoomDatabase(){
     abstract fun notificationDao():NotificationDao
     companion object{
@@ -19,7 +19,6 @@ abstract class NotificationDatabase : RoomDatabase(){
 
         fun getDatabase(application: Application) : NotificationDatabase{
 
-            Log.d("MyTagHere", "getDatabase: fifthPlace")
             if(INSTANCE != null){
                 return INSTANCE!!
             }
@@ -28,7 +27,7 @@ abstract class NotificationDatabase : RoomDatabase(){
             return Room.databaseBuilder(application.applicationContext,
                 NotificationDatabase::class.java,
                 "notification_database"
-            ).build()
+            ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
         }
 
     }

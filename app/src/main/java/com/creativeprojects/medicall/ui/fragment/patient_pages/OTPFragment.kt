@@ -41,7 +41,7 @@ class OTPFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding= FragmentOTPBinding.inflate(inflater)
         directions = OTPFragmentDirections.actionOTPFragmentToConfirmedFragment()
 
@@ -56,11 +56,11 @@ class OTPFragment : BaseFragment() {
 
 
         binding.confirmButton.setOnClickListener(View.OnClickListener {
-            var myVerificationCode:String = getVerificationCode() as String
+            val myVerificationCode:String = getVerificationCode() as String
             if(myVerificationCode.length==6){
                 searchVerification(myVerificationCode)
             }else{
-                var et=checkEmptiness()
+                val et=checkEmptiness()
                 et.requestFocus()
             }
         })
@@ -73,14 +73,23 @@ class OTPFragment : BaseFragment() {
 
         binding.idYenidenGonder.setOnClickListener(View.OnClickListener {
             Log.d(TAG, "onCreateView: yeniden gonder Clicked")
+            startTimer()
+            clearOTPs()
+            binding.firstEt.requestFocus()
             firebase.sendVerificationCode(countryCode,phoneNumber)
-            //to restart fragment
-            NavHostFragment.findNavController(this).navigate(OTPFragmentDirections.actionOTPFragmentSelf())
-            Toast.makeText(requireContext(),"Your code sent your number again!",Toast.LENGTH_LONG).show()
             Log.d(TAG, "onCreateView: fragment restartet ")
         })
 
         return binding.root
+    }
+
+    private fun clearOTPs() {
+        binding.firstEt.text!!.clear()
+        binding.secondEt.text!!.clear()
+        binding.thirdEt.text!!.clear()
+        binding.fourthEt.text!!.clear()
+        binding.fifthEt.text!!.clear()
+        binding.sixthEt.text!!.clear()
     }
 
     @SuppressLint("SetTextI18n")

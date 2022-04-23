@@ -21,9 +21,9 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
-
 class NotificationFragment : BaseFragment() {
     lateinit var binding: FragmentNotificationBinding
+    lateinit var adapter: NotificationsAdapter
 
     companion object {
         const val TOPIC = "/topics/myTopic"
@@ -33,19 +33,21 @@ class NotificationFragment : BaseFragment() {
     }
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNotificationBinding.inflate(inflater)
+        checkReads()
 
         FirebaseMessaging.getInstance().subscribeToTopic(TOPIC)
         Log.d(TAG, "onCreateView: firstPlace")
-        DoAsyncTask{
+
+        DoAsyncTask {
             Log.d(TAG, "onCreateView: secondPlace")
             assignRecyclerView()
         }.run()
+
 
 
         setClickListeners()
@@ -54,18 +56,18 @@ class NotificationFragment : BaseFragment() {
     }
 
 
-
     private fun setClickListeners() {
         binding.returnBackNotification.setOnClickListener(View.OnClickListener {
             requireActivity().onBackPressed()
         })
 
-        binding.markAsRead.setOnClickListener(View.OnClickListener {
-            if(binding.markAsRead.background.equals(R.drawable.mark_as_read_gray)) {
-                binding.markAsRead.background = AppCompatResources.getDrawable(requireContext(), R.drawable.mark_as_read_blue)
-                sendNotificationRead()
-            }
-        })
+        binding.markAsRead.setOnClickListener {
+            Log.d(TAG, "setClickListeners: markAsReadSection")
+            binding.markAsRead.background =
+                AppCompatResources.getDrawable(requireContext(), R.drawable.mark_as_read_blue)
+            sendAllNotificationRead()
+            assignRecyclerView()
+        }
 
         binding.trash.setOnClickListener {
             val dialog = DeleteMessageDialog(binding)
@@ -75,55 +77,90 @@ class NotificationFragment : BaseFragment() {
 
 
         binding.forInstance.setOnClickListener(View.OnClickListener {
-            SendingCloudMessage.sendMessage("Warning!","Ambulance arrived!", Calendar.getInstance().timeInMillis.toString(),R.drawable.ambulance,TOPIC)
+            SendingCloudMessage.sendMessage(
+                "Warning!",
+                "Ambulance arrived!",
+                Calendar.getInstance().timeInMillis.toString(),
+                R.drawable.ambulance,
+                TOPIC
+            )
         })
 
     }
 
-    private fun sendNotificationRead() {
-        DoAsyncTask{
-            NotificationDatabase.getDatabase(requireActivity().application).notificationDao().updateAllRead()
+    private fun sendAllNotificationRead() {
+        DoAsyncTask {
+            NotificationDatabase.getDatabase(requireActivity().application).notificationDao()
+                .updateAllRead("true")
         }.run()
     }
 
 
-    private fun assignRecyclerView(){
-        Log.d(TAG, "assignRecyclerView: thirdPlace")
-        val notificationList = activity?.let { NotificationDatabase.getDatabase(it.application).notificationDao().getAllNotificationData() }
-        Log.d(TAG, "assignRecyclerView: fourth place")
-        if(notificationList!!.isEmpty()){
+    private fun assignRecyclerView() {
+        val notificationList = activity?.let {
+            NotificationDatabase.getDatabase(it.application).notificationDao()
+                .getAllNotificationData()
+        }
+        Log.d(TAG, "assignRecyclerView: ")
+        binding.myRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        adapter = NotificationsAdapter(notificationList, requireContext(), binding)
+        binding.myRecyclerView.adapter = adapter
+        if (notificationList!!.isEmpty()) {
             binding.myRecyclerView.visibility = View.GONE
             binding.forEmptyPicture.visibility = View.VISIBLE
-        }else {
+        } else {
             binding.myRecyclerView.visibility = View.VISIBLE
             binding.forEmptyPicture.visibility = View.GONE
-            binding.myRecyclerView.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            binding.myRecyclerView.adapter = NotificationsAdapter(notificationList,requireContext(),binding)
 
 
         }
 
     }
 
-    @Subscribe(threadMode = ThreadMode.ASYNC,sticky = true)
-    fun addingItemToRecyclerEvent(sendUniqueItemEvent: SendUniqueItemEvent){
-        Log.d(TAG, "addingItemToRecyclerEvent: adapter is notified!")
-        binding.myRecyclerView.adapter!!.notifyItemInserted(0)
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    fun addingItemToRecyclerEvent(sendUniqueItemEvent: SendUniqueItemEvent) {
+        val notificationList = activity?.let {
+            NotificationDatabase.getDatabase(it.application).notificationDao()
+                .getAllNotificationData()
+        }
+        if (notificationList!!.size == 1) {
+            binding.myRecyclerView.visibility = View.VISIBLE
+            binding.forEmptyPicture.visibility = View.GONE
+            assignRecyclerView()
+        }
+        Log.d(TAG, "addingItemToRecyclerEvent: " + notificationList!!.size)
+        adapter.notificationList = notificationList
+        adapter.notifyItemInserted(0)
+        binding.markAsRead.background =
+            AppCompatResources.getDrawable(requireContext(), R.drawable.mark_as_read_gray)
     }
 
 
-    @Subscribe(threadMode = ThreadMode.ASYNC,sticky = true)
-    fun onUpdateReadHappened(updateReadEvent: UpdateReadEvent){
-        Log.d(TAG, "onUpdateReadHappened: read one time happened!")
-        DoAsyncTask{
+    @Subscribe(threadMode = ThreadMode.ASYNC, sticky = true)
+    fun onUpdateReadHappened(updateReadEvent: UpdateReadEvent) {
+        DoAsyncTask {
             val DAO = NotificationDatabase.getDatabase(requireActivity().application).notificationDao()
-            DAO.updateSingleRead(updateReadEvent.mPosition)
-
-
+            val position: Int = updateReadEvent.mSize-updateReadEvent.mPosition
+            Log.d(TAG, "onUpdateReadHappened: recyclerPosition:"+position)
+            DAO.updateSingleRead(position, "true")
         }.run()
+        checkReads()
     }
 
+    private fun checkReads() {
+        val list: List<String> =
+            NotificationDatabase.getDatabase(requireActivity().application).notificationDao()
+                .getNumberOfUnreadNotification("false")
+        Log.d(TAG, "checkReads: My False List is:$list")
+        if (list.isEmpty())
+            binding.markAsRead.background =
+                AppCompatResources.getDrawable(requireContext(), R.drawable.mark_as_read_blue)
+        else {
+            binding.markAsRead.background =
+                AppCompatResources.getDrawable(requireContext(), R.drawable.mark_as_read_gray)
+        }
+    }
 
 
 }

@@ -14,5 +14,5 @@ data class NotificationModel(
     var image:Int,
     var notificationMessage:String,
     var title:String,
-    var read:Boolean
+    var read:String
     )

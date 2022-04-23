@@ -6,7 +6,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.DialogFragment
+import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.database.roomdb.NotificationDatabase
 import com.creativeprojects.medicall.databinding.DeletemessageDialogBinding
 import com.creativeprojects.medicall.databinding.FragmentNotificationBinding
@@ -50,6 +52,8 @@ class DeleteMessageDialog(binding: FragmentNotificationBinding) : DialogFragment
             }.run()
             mBinding.myRecyclerView.visibility = View.GONE
             mBinding.forEmptyPicture.visibility = View.VISIBLE
+
+            mBinding.markAsRead.background = AppCompatResources.getDrawable(requireContext(), R.drawable.mark_as_read_blue)
             Log.d(TAG, "setClickListeners: View is changed")
             dismiss()
         })
