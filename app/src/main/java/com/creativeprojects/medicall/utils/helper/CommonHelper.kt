@@ -1,6 +1,7 @@
 package com.creativeprojects.medicall.utils.helper
 
 import android.app.Activity
+import android.app.ActivityManager
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.pm.PackageManager
@@ -8,7 +9,6 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.getSystemService
 
 
 object CommonHelper {
@@ -26,6 +26,7 @@ object CommonHelper {
         }
         return permitted
     }
+
 
     fun getActivityFromContext(context: Context?): Activity? {
         if (context == null) {

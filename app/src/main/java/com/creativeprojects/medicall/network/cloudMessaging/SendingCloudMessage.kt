@@ -15,12 +15,12 @@ class SendingCloudMessage {
 
 
     companion object{
-        private val TAG="MyTagHere"
+        private const val TAG="MyTagHere"
 
-        fun sendMessage(textMessage:String,subTextMessage:String,date:String,largeIcon: Int) {
+        fun sendMessage(title:String,subTextMessage:String,date:String,largeIcon: Int,to: String) {
             PushNotification(
-                NotificationData(textMessage,subTextMessage,date,largeIcon),
-                TOPIC
+                NotificationData(title,subTextMessage,date,largeIcon),
+                to
             ).also {
                 sendNotification(it)
                 Log.d(TAG, "callNotification: We are here!..." )

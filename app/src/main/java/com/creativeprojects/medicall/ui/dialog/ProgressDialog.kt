@@ -15,6 +15,8 @@ class ProgressDialog(context: Context,var text: String) : Dialog(context) {
         setContentView(binding.root)
     }
 
+
+
     fun close(){
         dismiss()
     }

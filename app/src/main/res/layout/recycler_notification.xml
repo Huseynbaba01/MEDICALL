@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="82dp"
+    android:layout_marginTop="5dp"
+    android:id="@+id/itemOfRecyclerView"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -17,6 +19,7 @@
         android:layout_margin="16dp"
         android:thicknessRatio="1.9">
         <ImageView
+            android:padding="1dp"
             android:layout_height="50dp"
             android:layout_width="50dp"
             android:id="@+id/viewCircle"
@@ -27,24 +30,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/cardCircle"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/cardCircle"
         android:text="Your notification here!"
         android:id="@+id/mainText"
         android:textColor="#9C9C9C"
         android:textSize="14sp" />
 
     <TextView
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/date"
-        android:text="Your notification date here!"
-        android:textSize="12sp"
-        android:textColor="#9C9C9C"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="2dp"/>
+        android:layout_marginBottom="2dp"
+        android:text="Your notification date here!"
+        android:textColor="#9C9C9C"
+        android:textSize="12sp" />
+
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:id="@+id/isRead"-->
+<!--        android:layout_width="10dp"-->
+<!--        android:layout_height="10dp"-->
+<!--        android:layout_alignEnd="@id/date"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        app:cardBackgroundColor="#F3AB40"-->
+<!--        app:cardCornerRadius="5dp" />-->
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/isRead"
+        android:background="@drawable/mark_as_read_gray"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"/>
+
 
 
 </RelativeLayout>
