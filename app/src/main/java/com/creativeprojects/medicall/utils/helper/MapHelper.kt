@@ -82,20 +82,20 @@ object MapHelper {
 
     fun getLocationInfo(
         context: Context,
-        location: LatLng,
+        location: LatLng?,
         repeat: Int,
-    ): Address {
+    ): Address? {
         Log.d("MyTagHere", "getLocationInfo: $repeat")
         return try {
             Geocoder(context, Locale.getDefault()).getFromLocation(
-                location.latitude,
+                location!!.latitude,
                 location.longitude,
                 1
             )[0]
         } catch (e: Exception) {
-            getLocationInfo(context, location, repeat - 1)
+            null
         }
-        }
+    }
 
 
 

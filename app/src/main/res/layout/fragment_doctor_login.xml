@@ -72,9 +72,11 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
+                android:maxLines="1"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/text_black" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,6 +94,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
+                android:maxLines="1"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="@string/hint_password"

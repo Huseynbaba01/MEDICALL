@@ -10,13 +10,13 @@ import com.creativeprojects.medicall.event.DoctorInboxItemCancelledEvent
 import com.creativeprojects.medicall.model.DoctorInboxItem
 import org.greenrobot.eventbus.EventBus
 
-class CustomAlertDialog(context: Context,val item: DoctorInboxItem,val position: Int): Dialog(context) {
+class CustomAlertDialog(context: Context,val item: DoctorInboxItem,val position: Int,var message: String): Dialog(context) {
     private lateinit var binding: DialogCustomAlertBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DialogCustomAlertBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.message.text = message
         setCancelable(false)
         window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         binding.close.setOnClickListener {

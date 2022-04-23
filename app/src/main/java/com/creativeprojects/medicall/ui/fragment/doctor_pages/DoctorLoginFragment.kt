@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.FragmentDoctorLoginBinding
 
 class DoctorLoginFragment : Fragment() {
     private lateinit var binding: FragmentDoctorLoginBinding
-    private val userName = "Doctor"
+    private val userName = "doctor@helptix.com"
     private val password = "121212"
 
     override fun onCreateView(

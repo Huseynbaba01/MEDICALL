@@ -1,6 +1,7 @@
 package com.creativeprojects.medicall.ui.fragment.patient_pages
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.LocationManager
@@ -27,6 +28,7 @@ import com.creativeprojects.medicall.utils.helper.CommonHelper
 import com.creativeprojects.medicall.utils.helper.MapHelper
 import com.creativeprojects.medicall.utils.helper.MessageHelper
 import com.creativeprojects.medicall.utils.helper.TimeHelper
+import com.creativeprojects.medicall.utils.mock.DoAsyncTask
 import com.creativeprojects.medicall.utils.mock.MockCancellationToken
 import com.creativeprojects.medicall.viewmodel.AddressSelectionViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -47,16 +49,16 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
     private val TAG: String = "AddressSelection"
 
     private var addressHistoryAdapter: AddressHistoryAdapter = AddressHistoryAdapter(emptyList())
-    private var historyItems : List<AddressHistoryItem> = ArrayList()
+    private var historyItems: List<AddressHistoryItem> = ArrayList()
     private var currentLatLng: LatLng? = null
 
-    private lateinit var addressSelectionViewModel : AddressSelectionViewModel
+    private lateinit var addressSelectionViewModel: AddressSelectionViewModel
     private lateinit var googleMap: GoogleMap
     private lateinit var binding: FragmentAddressSelectionBinding
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var locationManager: LocationManager
-    private lateinit var selectedLocation : LatLng
+    private lateinit var selectedLocation: LatLng
 
 
     override fun onCreateView(
@@ -84,17 +86,21 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
             1000
         )
 
-        addressSelectionViewModel = ViewModelProvider(requireActivity())[AddressSelectionViewModel::class.java]
+        addressSelectionViewModel =
+            ViewModelProvider(requireActivity())[AddressSelectionViewModel::class.java]
 
         addressSelectionViewModel.allHistoryItems.observe(
             viewLifecycleOwner
         ) {
-            it.forEach {item ->
-                Log.d(TAG, "onViewCreated86: "+item.latitude+" " + item.longitude+item.time+ " \n ")
+            it.forEach { item ->
+                Log.d(
+                    TAG,
+                    "onViewCreated86: " + item.latitude + " " + item.longitude + item.time + " \n "
+                )
             }
             historyItems =
-                if(it.size >= 3) it.subList(0, 3)
-                else             it
+                if (it.size >= 3) it.subList(0, 3)
+                else it
             addressHistoryAdapter.updateDataSet(historyItems)
         }
 
@@ -103,7 +109,8 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
             LocationServices.getFusedLocationProviderClient(requireContext())
 //        getCurrentLocation()
 
-        binding.historyItems.adapter = addressHistoryAdapter//TODO replace with the appropriate history list:)
+        binding.historyItems.adapter =
+            addressHistoryAdapter//TODO replace with the appropriate history list:)
         binding.historyItems.layoutManager = LinearLayoutManager(context)
         binding.searchInput.onFocusChangeListener = this
         binding.searchButton.setOnClickListener {
@@ -144,10 +151,18 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
 
     }
 
+    @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap) {
         Log.d(TAG, "onMapReady: Map is ready")
         googleMap = map
         googleMap.setOnMapLongClickListener(this)
+        checkPermissions{
+            googleMap.isMyLocationEnabled = true
+//            googleMap.setOnMyLocationChangeListener {
+//            }
+//            MapHelper.addMarkerTo(LatLng(googleMap.myLocation.latitude,googleMap.myLocation.longitude), googleMap, requireContext())
+        }
+
     }
 
     override fun onFocusChange(view: View?, hasFocus: Boolean) {
@@ -158,30 +173,32 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
     }
 
 
-
-    private fun addToHistoryItems(){
+    private fun addToHistoryItems() {
         binding.btnAuto.isEnabled = false
 //        MessageHelper.showProgressDialog(requireContext(), "Getting location info\n\nPlease wait...")
         val address = MapHelper.getLocationInfo(requireContext(), selectedLocation, 10)
-        val title = address.subThoroughfare + " - " + address.thoroughfare
-        val subtitle = "${address.locality}, ${address.countryName}"
+        if (address != null) {
+            val title = address.subThoroughfare + " - " + address.thoroughfare
+            val subtitle = "${address.locality}, ${address.countryName}"
 //        MessageHelper.closeProgressDialog()
-        binding.btnAuto.isEnabled = true
+            binding.btnAuto.isEnabled = true
 
-        addressSelectionViewModel.insertHistoryItem(
-            AddressHistoryItem(
-                TimeHelper.getCurrentTimeInMillis(),
-                selectedLocation.latitude,
-                selectedLocation.longitude,
-                title,
-                subtitle
+            addressSelectionViewModel.insertHistoryItem(
+                AddressHistoryItem(
+                    TimeHelper.getCurrentTimeInMillis(),
+                    selectedLocation.latitude,
+                    selectedLocation.longitude,
+                    title,
+                    subtitle
+                )
             )
-        )
-}
+        }
+        binding.btnAuto.isEnabled = true
+    }
 
 
     @Subscribe(sticky = false, threadMode = ThreadMode.MAIN)
-    fun  onHistoryItemSelectedEvent(event : HistoryItemSelectedEvent){
+    fun onHistoryItemSelectedEvent(event: HistoryItemSelectedEvent) {
         CommonHelper.closeKeyboard(binding.searchInput)
         binding.historyItemsCard.visibility = GONE
         binding.searchInput.clearFocus()
@@ -190,12 +207,15 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.ASYNC)
-    fun  onHistoryItemDeletedEvent(event : HistoryItemDeletedEvent){
+    fun onHistoryItemDeletedEvent(event: HistoryItemDeletedEvent) {
         addressSelectionViewModel.deleteHistoryItem(event.historyItem)
     }
 
-    private fun selectLocation(latLng: LatLng){
-        MessageHelper.showProgressDialog(requireContext(), "Getting location info\n\nPlease wait...")
+    private fun selectLocation(latLng: LatLng) {
+        MessageHelper.showProgressDialog(
+            requireContext(),
+            "Getting location info\n\nPlease wait..."
+        )
         selectedLocation = latLng
         MapHelper.clearAllMarkers(googleMap)
         MapHelper.addMarkerTo(selectedLocation, googleMap, requireContext())
@@ -209,5 +229,29 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
     override fun onMapLongClick(latlng: LatLng) {
         selectLocation(latlng)
         addToHistoryItems()
+    }
+
+    private fun checkPermissions(runnable: Runnable) {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+            && ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
+                100
+            )
+        }
+        else{
+            runnable.run()
+        }
     }
 }

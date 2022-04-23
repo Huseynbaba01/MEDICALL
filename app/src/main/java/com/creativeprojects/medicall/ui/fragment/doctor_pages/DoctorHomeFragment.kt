@@ -84,7 +84,7 @@ class DoctorHomeFragment : BaseFragment() {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onDoctorInboxItemCancelEvent(event: DoctorInboxCancelEvent) {
-        CustomAlertDialog(requireContext(), event.doctorInboxItem, event.position).show()
+        CustomAlertDialog(requireContext(), event.doctorInboxItem, event.position, "Müraciəti ləğv etmək istədiyinizdən əminsiniz?").show()
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -96,7 +96,9 @@ class DoctorHomeFragment : BaseFragment() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onDoctorInboxItemProceedEvent(event: DoctorInboxProceedEvent) {
         if (event.doctorInboxItem.status == DoctorInboxStatus.DONE) {
-            // We can show that the request has been ended
+            CustomAlertDialog(requireContext(), event.doctorInboxItem, event.position, "Müraciəti bitirmək istədiyinizdən əminsiniz?").show()
+//            inboxItems.removeAt(event.position)
+//            adapter.notifyItemRemoved(event.position)
         } else if (event.doctorInboxItem.status == DoctorInboxStatus.NOT_ACCEPTED) {
             event.doctorInboxItem.status = DoctorInboxStatus.ACCEPTED
             adapter.notifyItemChanged(event.position)

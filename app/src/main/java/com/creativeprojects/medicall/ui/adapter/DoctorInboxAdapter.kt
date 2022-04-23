@@ -1,6 +1,8 @@
 package com.creativeprojects.medicall.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.creativeprojects.medicall.R
@@ -57,18 +59,21 @@ class DoctorInboxAdapter(var items: List<DoctorInboxItem>) :
                 holder.cardStatus.setCardBackgroundColor(context.getColor(R.color.status_yellow))
                 holder.buttonProceed.setBackgroundColor(context.getColor(R.color.main_blue))
                 holder.buttonProceed.setText(R.string.title_accept)
+                holder.buttonCancel.visibility = VISIBLE
             }
             ACCEPTED -> {
                 holder.textStatus.setText(R.string.title_been_accepted)
                 holder.cardStatus.setCardBackgroundColor(context.getColor(R.color.status_green))
                 holder.buttonProceed.setBackgroundColor(context.getColor(R.color.green))
                 holder.buttonProceed.setText(R.string.title_accepted)
+                holder.buttonCancel.visibility = VISIBLE
             }
             DONE -> {
                 holder.textStatus.setText(R.string.title_been_accepted)
                 holder.cardStatus.setCardBackgroundColor(holder.cardStatus.context.getColor(R.color.status_green))
                 holder.buttonProceed.setBackgroundColor(holder.cardStatus.context.getColor(R.color.main_blue))
                 holder.buttonProceed.setText(R.string.title_end_request)
+                holder.buttonCancel.visibility = GONE
             }
         }
         holder.buttonCancel.setOnClickListener {
