@@ -25,7 +25,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="10"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ambulance_intro" />
+                android:src="@drawable/ic_ambulance_intro" />
 
             <TextView
                 android:id="@+id/text"

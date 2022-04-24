@@ -1,11 +1,12 @@
 package com.creativeprojects.medicall.ui.fragment.doctor_pages
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.creativeprojects.medicall.databinding.DoctorHomeFragmentBinding
 import com.creativeprojects.medicall.event.DoctorInboxCancelEvent
@@ -21,7 +22,6 @@ import com.creativeprojects.medicall.viewmodel.DoctorHomeViewModel
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.*
-import kotlin.collections.ArrayList
 
 class DoctorHomeFragment : BaseFragment() {
 
@@ -43,7 +43,7 @@ class DoctorHomeFragment : BaseFragment() {
         inboxItems.add(
             DoctorInboxItem(
                 Calendar.getInstance().timeInMillis - 4444,
-                DoctorInboxStatus.DONE,
+                DoctorInboxStatus.NOT_ACCEPTED,
                 "Neftçilər pr 125",
                 DiseaseType.FEVER, null
             )
@@ -51,7 +51,7 @@ class DoctorHomeFragment : BaseFragment() {
         inboxItems.add(
             DoctorInboxItem(
                 Calendar.getInstance().timeInMillis - 33333,
-                DoctorInboxStatus.ACCEPTED,
+                DoctorInboxStatus.NOT_ACCEPTED,
                 "Bakı Mühəndislik Universiteti",
                 DiseaseType.HEART_STROKE, null
             )
@@ -84,24 +84,44 @@ class DoctorHomeFragment : BaseFragment() {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onDoctorInboxItemCancelEvent(event: DoctorInboxCancelEvent) {
-        CustomAlertDialog(requireContext(), event.doctorInboxItem, event.position, "Müraciəti ləğv etmək istədiyinizdən əminsiniz?").show()
+        CustomAlertDialog(
+            requireContext(),
+            event.doctorInboxItem,
+            event.position,
+            "Müraciəti ləğv etmək istədiyinizdən əminsiniz?"
+        ).show()
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onDoctorInboxItemCancelledEvent(event: DoctorInboxItemCancelledEvent) {
         inboxItems.remove(event.item)
         adapter.notifyItemRemoved(event.position)
+        adapter.notifyItemChanged(event.position)
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onDoctorInboxItemProceedEvent(event: DoctorInboxProceedEvent) {
         if (event.doctorInboxItem.status == DoctorInboxStatus.DONE) {
-            CustomAlertDialog(requireContext(), event.doctorInboxItem, event.position, "Müraciəti bitirmək istədiyinizdən əminsiniz?").show()
+            CustomAlertDialog(
+                requireContext(),
+                event.doctorInboxItem,
+                event.position,
+                "Müraciəti bitirmək istədiyinizdən əminsiniz?"
+            ).show()
 //            inboxItems.removeAt(event.position)
 //            adapter.notifyItemRemoved(event.position)
         } else if (event.doctorInboxItem.status == DoctorInboxStatus.NOT_ACCEPTED) {
             event.doctorInboxItem.status = DoctorInboxStatus.ACCEPTED
             adapter.notifyItemChanged(event.position)
+            Handler(Looper.getMainLooper()).postDelayed(
+                {
+                    if (inboxItems.size > 0) {
+                        inboxItems[0].status = DoctorInboxStatus.DONE
+                        adapter.notifyItemChanged(event.position)
+                    }
+
+                }, 2000
+            )
         }
     }
 

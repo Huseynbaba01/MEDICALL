@@ -8,9 +8,12 @@
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/border_grey.xml" value="0.141" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/diseases_background.xml" value="0.173" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/diseases_clicked_background.xml" value="0.173" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/ic_ambulance_intro.xml" value="0.22" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/ic_cancel_icon.xml" value="0.142" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/ic_dizzy_shadow_main.xml" value="0.2115" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/ic_launcher_background.xml" value="0.17" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/ic_location_icon.xml" value="0.1705" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/ic_message_light.xml" value="0.1705" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/drawable/myd.xml" value="0.143" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout-dpi/fragment_diseases.xml" value="0.18" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/activity_doctor_main.xml" value="0.22" />
@@ -20,20 +23,21 @@
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/dialog_progress.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/doctor_home_fragment.xml" value="0.2" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_address_selection.xml" value="0.18" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_application.xml" value="0.2" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_confirmed.xml" value="0.33" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_continue_with_phone_number.xml" value="0.1675929884566054" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_application.xml" value="0.33" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_confirmed.xml" value="0.24812834224598931" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_continue_with_phone_number.xml" value="0.28280254777070063" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_dashboard.xml" value="0.1675929884566054" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_diseases.xml" value="0.2" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_doctor_login.xml" value="0.2" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_home.xml" value="0.1675929884566054" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_intro.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_intro.xml" value="0.25" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_maps.xml" value="0.1" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_o_t_p.xml" value="0.22" />
-        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_select_user_type.xml" value="0.14" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_o_t_p.xml" value="0.25" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/fragment_select_user_type.xml" value="0.1" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/listitem_address_history.xml" value="0.25" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/listitem_doctor_inbox.xml" value="0.44541484716157204" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/layout/recycler_notification.xml" value="0.33" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/MEDICALL/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1675929884566054" />
       </map>
     </option>

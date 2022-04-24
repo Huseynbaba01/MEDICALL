@@ -6,8 +6,6 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -28,7 +26,6 @@ import com.creativeprojects.medicall.utils.helper.CommonHelper
 import com.creativeprojects.medicall.utils.helper.MapHelper
 import com.creativeprojects.medicall.utils.helper.MessageHelper
 import com.creativeprojects.medicall.utils.helper.TimeHelper
-import com.creativeprojects.medicall.utils.mock.DoAsyncTask
 import com.creativeprojects.medicall.utils.mock.MockCancellationToken
 import com.creativeprojects.medicall.viewmodel.AddressSelectionViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -118,7 +115,11 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
         }
 
         binding.btnAssign.setOnClickListener {
-            findNavController().navigate(AddressSelectionFragmentDirections.actionAddressSelectionFragmentToContinueWithPhoneNumberFragment())
+            findNavController().navigate(AddressSelectionFragmentDirections.actionAddressSelectionFragmentToDiseasesFragment())
+        }
+
+        binding.back.setOnClickListener {
+            activity?.onBackPressed()
         }
 
         binding.btnAuto.setOnClickListener {

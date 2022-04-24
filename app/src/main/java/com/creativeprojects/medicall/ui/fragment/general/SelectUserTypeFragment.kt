@@ -18,7 +18,7 @@ class SelectUserTypeFragment : Fragment() {
     ): View {
         binding = FragmentSelectUserTypeBinding.inflate(inflater)
         binding.cvCallAmbulance.setOnClickListener {
-            findNavController().navigate(SelectUserTypeFragmentDirections.actionSelectUserTypeFragmentToDiseasesFragment())
+            findNavController().navigate(SelectUserTypeFragmentDirections.actionSelectUserTypeFragmentToAddressSelectionFragment())
         }
         binding.cvAsDoctor.setOnClickListener {
             findNavController().navigate(SelectUserTypeFragmentDirections.actionSelectUserTypeFragmentToDoctorLoginFragment())

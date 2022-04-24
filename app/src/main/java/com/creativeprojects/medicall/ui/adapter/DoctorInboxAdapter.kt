@@ -1,9 +1,11 @@
 package com.creativeprojects.medicall.ui.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.creativeprojects.medicall.R
 import com.creativeprojects.medicall.databinding.ListitemDoctorInboxBinding
@@ -59,6 +61,7 @@ class DoctorInboxAdapter(var items: List<DoctorInboxItem>) :
                 holder.cardStatus.setCardBackgroundColor(context.getColor(R.color.status_yellow))
                 holder.buttonProceed.setBackgroundColor(context.getColor(R.color.main_blue))
                 holder.buttonProceed.setText(R.string.title_accept)
+                holder.buttonProceed.isClickable = true
                 holder.buttonCancel.visibility = VISIBLE
             }
             ACCEPTED -> {
@@ -66,6 +69,7 @@ class DoctorInboxAdapter(var items: List<DoctorInboxItem>) :
                 holder.cardStatus.setCardBackgroundColor(context.getColor(R.color.status_green))
                 holder.buttonProceed.setBackgroundColor(context.getColor(R.color.green))
                 holder.buttonProceed.setText(R.string.title_accepted)
+                holder.buttonProceed.isClickable = false
                 holder.buttonCancel.visibility = VISIBLE
             }
             DONE -> {
@@ -73,6 +77,7 @@ class DoctorInboxAdapter(var items: List<DoctorInboxItem>) :
                 holder.cardStatus.setCardBackgroundColor(holder.cardStatus.context.getColor(R.color.status_green))
                 holder.buttonProceed.setBackgroundColor(holder.cardStatus.context.getColor(R.color.main_blue))
                 holder.buttonProceed.setText(R.string.title_end_request)
+                holder.buttonProceed.isClickable = true
                 holder.buttonCancel.visibility = GONE
             }
         }
@@ -82,6 +87,25 @@ class DoctorInboxAdapter(var items: List<DoctorInboxItem>) :
 
         holder.buttonProceed.setOnClickListener {
             EventBus.getDefault().post(DoctorInboxProceedEvent(item, position))
+        }
+        if(position != 0){
+            val grey = ContextCompat.getColor(context, R.color.disabled_grey)
+            holder.buttonCancel.isEnabled = false
+            holder.buttonCancel.setStrokeColorResource(R.color.text_grey)
+            holder.buttonCancel.setBackgroundColor(grey)
+            holder.buttonProceed.isEnabled = false
+            holder.buttonProceed.setBackgroundColor(grey)
+        }
+        else{
+            val blue = ContextCompat.getColor(context, R.color.main_blue)
+            holder.buttonCancel.isEnabled = true
+            holder.buttonCancel.setStrokeColorResource(R.color.main_blue)
+            holder.buttonCancel.setBackgroundColor(Color.WHITE)
+            holder.buttonProceed.isEnabled = true
+            if(item.status == DONE || item.status == NOT_ACCEPTED)
+                holder.buttonProceed.setBackgroundColor(blue)
+            else
+                holder.buttonProceed.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
         }
     }
 

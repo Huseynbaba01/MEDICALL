@@ -27,7 +27,7 @@ object MapHelper {
             .icon(
                 ImageHelper.getBitmapDescriptor(
                     context,
-                    R.drawable.location_icon,
+                    R.drawable.ic_location_icon,
                     ImageHelper.dpToPx(32),
                     ImageHelper.dpToPx(39)
                 )

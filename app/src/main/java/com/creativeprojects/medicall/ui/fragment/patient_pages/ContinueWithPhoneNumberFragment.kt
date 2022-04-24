@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.creativeprojects.medicall.utils.helper.SearchValidation
 import com.creativeprojects.medicall.databinding.FragmentContinueWithPhoneNumberBinding
 import com.creativeprojects.medicall.event.SendPhoneNumberAndCountryCodeEvent
@@ -75,10 +76,10 @@ class ContinueWithPhoneNumberFragment : BaseFragment() {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
-    fun moveToOTP(startActionToOTP: StartActionToOTPEvent){
+    fun onStartActionToOTPEvent(startActionToOTP: StartActionToOTPEvent){
         val d = Log.d("MyTagHere", "moveToOTP: MoveToOTP")
 
-        NavHostFragment.findNavController(this).navigate(directions)
+        findNavController().navigate(ContinueWithPhoneNumberFragmentDirections.actionContinueWithPhoneNumberFragmentToOTPFragment())
     }
 
 

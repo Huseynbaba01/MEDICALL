@@ -11,14 +11,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavDirections
-import androidx.navigation.fragment.NavHostFragment
-import com.creativeprojects.medicall.utils.helper.GenericTextWatcher
 import com.creativeprojects.medicall.databinding.FragmentOTPBinding
 import com.creativeprojects.medicall.event.SendPhoneNumberAndCountryCodeEvent
 import com.creativeprojects.medicall.event.SendVerificationCodeEvent
 import com.creativeprojects.medicall.network.methods.MyFirebase
 import com.creativeprojects.medicall.ui.fragment.general.BaseFragment
+import com.creativeprojects.medicall.utils.helper.GenericTextWatcher
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.i18n.phonenumbers.NumberParseException
@@ -29,20 +29,20 @@ import org.greenrobot.eventbus.ThreadMode
 
 class OTPFragment : BaseFragment() {
     lateinit var binding: FragmentOTPBinding
-    lateinit var verificationId : String
-    lateinit var phoneNumber:String
-    lateinit var countryCode:String
+    lateinit var verificationId: String
+    lateinit var phoneNumber: String
+    lateinit var countryCode: String
     lateinit var firebase: MyFirebase
     lateinit var directions: NavDirections
 
-    val TAG="MyTagHere"
+    val TAG = "MyTagHere"
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding= FragmentOTPBinding.inflate(inflater)
+        binding = FragmentOTPBinding.inflate(inflater)
         directions = OTPFragmentDirections.actionOTPFragmentToConfirmedFragment()
 
         firebase = MyFirebase(requireActivity())
@@ -56,18 +56,17 @@ class OTPFragment : BaseFragment() {
 
 
         binding.confirmButton.setOnClickListener(View.OnClickListener {
-            val myVerificationCode:String = getVerificationCode() as String
-            if(myVerificationCode.length==6){
+            val myVerificationCode: String = getVerificationCode() as String
+            if (myVerificationCode.length == 6) {
                 searchVerification(myVerificationCode)
-            }else{
-                val et=checkEmptiness()
+            } else {
+                val et = checkEmptiness()
                 et.requestFocus()
             }
         })
 
-        binding.otpReturnbackicon.setOnClickListener {
+        binding.back.setOnClickListener {
             activity?.onBackPressed()
-            Log.d(TAG, "onCreateView: backButtonPressed")
         }
 
 
@@ -76,7 +75,7 @@ class OTPFragment : BaseFragment() {
             startTimer()
             clearOTPs()
             binding.firstEt.requestFocus()
-            firebase.sendVerificationCode(countryCode,phoneNumber)
+            firebase.sendVerificationCode(countryCode, phoneNumber)
             Log.d(TAG, "onCreateView: fragment restartet ")
         })
 
@@ -96,13 +95,14 @@ class OTPFragment : BaseFragment() {
     private fun showPhoneNumberInOTP() {
         Log.d(TAG, "showPhoneNumberInOTP: yes,you did it")
 
-        var formattedPhoneNumber: String
+        val formattedPhoneNumber: String
         if (TextUtils.isEmpty(countryCode)) {
             formattedPhoneNumber = phoneNumber
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 formattedPhoneNumber = PhoneNumberUtils.formatNumber(phoneNumber, countryCode)
-                Toast.makeText(requireContext(), "e164 : $formattedPhoneNumber", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Code sent to : $formattedPhoneNumber", Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 formattedPhoneNumber = try {
                     val instance = PhoneNumberUtil.getInstance()
@@ -126,46 +126,46 @@ class OTPFragment : BaseFragment() {
 
             @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
-                val secondUntilFinished=millisUntilFinished/1000
-                if(secondUntilFinished<10){
+                val secondUntilFinished = millisUntilFinished / 1000
+                if (secondUntilFinished < 10) {
                     binding.timer.text = "00:0$secondUntilFinished"
-                }else{
+                } else {
                     binding.timer.text = "00:$secondUntilFinished"
                 }
 
             }
 
             override fun onFinish() {
-                Toast.makeText(requireContext(),"Your time is off!",Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Your time is off!", Toast.LENGTH_LONG).show()
 
             }
         }.start()
     }
 
-    private fun checkEmptiness():TextInputEditText {
-        if(binding.firstEt.text.isNullOrEmpty())
+    private fun checkEmptiness(): TextInputEditText {
+        if (binding.firstEt.text.isNullOrEmpty())
             return binding.firstEt
-        else if(binding.secondEt.text.isNullOrEmpty())
+        else if (binding.secondEt.text.isNullOrEmpty())
             return binding.secondEt
-        else if(binding.thirdEt.text.isNullOrEmpty())
+        else if (binding.thirdEt.text.isNullOrEmpty())
             return binding.thirdEt
-        else if(binding.fourthEt.text.isNullOrEmpty())
+        else if (binding.fourthEt.text.isNullOrEmpty())
             return binding.fourthEt
-        else if(binding.fifthEt.text.isNullOrEmpty())
+        else if (binding.fifthEt.text.isNullOrEmpty())
             return binding.fifthEt
         Log.d(TAG, "checkEmpty: all full except 6")
         return binding.sixthEt
     }
 
-    private fun searchVerification(myVerificationCode:String) {
+    private fun  searchVerification(myVerificationCode: String) {
         Log.d(TAG, "searchVerification: getCredential Section!")
         val credential = PhoneAuthProvider.getCredential(verificationId, myVerificationCode)
-        firebase.verifyPhoneNumber(binding.root,credential,directions,this)
+        firebase.verifyPhoneNumber(binding.root, credential, directions, this)
     }
 
-    fun getVerificationCode(): String {
+    private fun getVerificationCode(): String {
         Log.d(TAG, "getVerificationCode: +")
-        var verificationCode = StringBuilder()
+        val verificationCode = StringBuilder()
         verificationCode.append(binding.firstEt.text)
         verificationCode.append(binding.secondEt.text)
         verificationCode.append(binding.thirdEt.text)
@@ -179,30 +179,55 @@ class OTPFragment : BaseFragment() {
 
 
     private fun passFocus() {
-        binding.firstEt.addTextChangedListener(GenericTextWatcher(binding.secondEt,binding.firstEt))
-        binding.secondEt.addTextChangedListener(GenericTextWatcher(binding.thirdEt,binding.firstEt))
-        binding.thirdEt.addTextChangedListener(GenericTextWatcher(binding.fourthEt,binding.secondEt))
-        binding.fourthEt.addTextChangedListener(GenericTextWatcher(binding.fifthEt,binding.thirdEt))
-        binding.fifthEt.addTextChangedListener(GenericTextWatcher(binding.sixthEt,binding.fourthEt))
-        binding.sixthEt.addTextChangedListener(GenericTextWatcher(binding.sixthEt,binding.fifthEt))
+        binding.firstEt.addTextChangedListener(
+            GenericTextWatcher(
+                binding.secondEt,
+                binding.firstEt
+            )
+        )
+        binding.secondEt.addTextChangedListener(
+            GenericTextWatcher(
+                binding.thirdEt,
+                binding.firstEt
+            )
+        )
+        binding.thirdEt.addTextChangedListener(
+            GenericTextWatcher(
+                binding.fourthEt,
+                binding.secondEt
+            )
+        )
+        binding.fourthEt.addTextChangedListener(
+            GenericTextWatcher(
+                binding.fifthEt,
+                binding.thirdEt
+            )
+        )
+        binding.fifthEt.addTextChangedListener(
+            GenericTextWatcher(
+                binding.sixthEt,
+                binding.fourthEt
+            )
+        )
+        binding.sixthEt.addTextChangedListener(GenericTextWatcher(binding.sixthEt, binding.fifthEt))
     }
 
-    @Subscribe(threadMode = ThreadMode.ASYNC, sticky = true)
-    fun onVerificationCodeSent(sendVerificationCodeEvent: SendVerificationCodeEvent){
-        verificationId=sendVerificationCodeEvent.verificationId
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    fun onVerificationCodeSent(sendVerificationCodeEvent: SendVerificationCodeEvent) {
+        verificationId = sendVerificationCodeEvent.verificationId
 
 
         Log.d(TAG, "onVerificationCodeSent: verificationCode:$verificationId")
     }
 
 
-    @Subscribe(threadMode=ThreadMode.MAIN,sticky = true)
-    fun getPhoneNumberAndCountryCode(sendPhoneNumberAndCountryCodeEvent: SendPhoneNumberAndCountryCodeEvent){
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    fun getPhoneNumberAndCountryCode(sendPhoneNumberAndCountryCodeEvent: SendPhoneNumberAndCountryCodeEvent) {
         Log.d(TAG, "getPhoneNumberAndCountryCode: getPhoneAndCountrySection")
 
-        phoneNumber=sendPhoneNumberAndCountryCodeEvent.phoneNumber
-        countryCode=sendPhoneNumberAndCountryCodeEvent.countryCode
-        Log.d(TAG, "getPhoneNumberAndCountryCode: "+phoneNumber)
+        phoneNumber = sendPhoneNumberAndCountryCodeEvent.phoneNumber
+        countryCode = sendPhoneNumberAndCountryCodeEvent.countryCode
+        Log.d(TAG, "getPhoneNumberAndCountryCode: " + phoneNumber)
         showPhoneNumberInOTP()
     }
 

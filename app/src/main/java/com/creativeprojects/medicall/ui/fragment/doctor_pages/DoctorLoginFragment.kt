@@ -19,7 +19,7 @@ class DoctorLoginFragment : Fragment() {
     ): View {
         binding = FragmentDoctorLoginBinding.inflate(inflater, container, false)
         binding.login.setOnClickListener{
-            if(binding.mailInputLayout.editText?.text.toString() == userName && binding.passwordInputLayout.editText?.text.toString() == password)
+            if(binding.mailInputLayout.editText?.text?.trim().toString() == userName && binding.passwordInputLayout.editText?.text.toString() == password)
                 findNavController().navigate(DoctorLoginFragmentDirections.actionDoctorLoginFragmentToDoctorMainactivity())
             else
                 binding.passwordInputLayout.error = "İstifadəçi adı və ya şifrə yanlışdır."

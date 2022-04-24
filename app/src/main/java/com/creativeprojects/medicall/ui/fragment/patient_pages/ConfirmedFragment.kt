@@ -21,6 +21,7 @@ class ConfirmedFragment : Fragment() {
         binding.close.setOnClickListener {
             findNavController().navigate(ConfirmedFragmentDirections.actionConfirmedFragmentToApplication())
         }
+
         return binding.root
     }
 }

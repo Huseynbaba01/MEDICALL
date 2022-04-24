@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.ContinueWithPhoneNumberFragment">
+    tools:context=".ui.fragment.patient_pages.ContinueWithPhoneNumberFragment">
 
 
     
@@ -55,6 +55,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:gravity="center"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="Müraciətinizi tamamlamaq üçün telefon nömrənizi qeyd edin"
                     android:textColor="#4F4949"
                     android:textSize="16sp" />
@@ -71,9 +72,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    app:cardElevation="@dimen/fastscroll__handle_corner"
                     android:layout_weight="0.8"
                     app:cardCornerRadius="16dp"
+                    app:strokeColor="@color/text_grey"
                     app:contentPadding="10dp">
 
                     <LinearLayout
@@ -86,9 +87,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center"
-                             app:ccp_defaultNameCode="AZ"
+                            app:ccp_defaultNameCode="AZ"
                             app:ccp_showNameCode="false"
-                            app:ccp_showPhoneCode="false"/>
+                            app:ccp_showPhoneCode="false" />
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -100,9 +101,9 @@
                                 android:layout_centerInParent="true"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="20dp"
-                                android:clickable="false"
                                 android:layout_marginBottom="5dp"
-                                android:background="#3E3C3C" />
+                                android:background="#3E3C3C"
+                                android:clickable="false" />
                         </RelativeLayout>
 
 
@@ -117,11 +118,11 @@
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
                                 android:background="@null"
-                                android:paddingStart="5dp"
+                                android:clickable="false"
                                 android:focusable="false"
+                                android:paddingStart="5dp"
                                 android:paddingRight="5dp"
                                 android:text="(+994)"
-                                android:clickable="false"
                                 android:textSize="16sp" />
 
                             <EditText
@@ -132,9 +133,9 @@
                                 android:layout_marginBottom="10dp"
                                 android:background="@null"
                                 android:clickable="true"
-                                android:screenReaderFocusable="true"
                                 android:focusable="true"
                                 android:inputType="number"
+                                android:screenReaderFocusable="true"
                                 android:text=""
                                 android:textSize="16sp" />
                         </LinearLayout>

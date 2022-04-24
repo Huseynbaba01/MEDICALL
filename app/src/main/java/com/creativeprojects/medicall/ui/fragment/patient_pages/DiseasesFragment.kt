@@ -106,12 +106,12 @@ class DiseasesFragment : Fragment(), View.OnFocusChangeListener {
 
     // return back when arrow clicked
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.arrowLeft?.setOnClickListener {
-            findNavController().navigate(DiseasesFragmentDirections.actionDiseasesFragmentToSelectUserTypeFragment())
+        binding.back?.setOnClickListener {
+            activity?.onBackPressed()
         }
 
         binding.mbConfirm.setOnClickListener {
-            findNavController().navigate(DiseasesFragmentDirections.actionDiseasesFragmentToAddressSelectionFragment())
+            findNavController().navigate(DiseasesFragmentDirections.actionDiseasesFragmentToContinueWithPhoneNumberFragment())
         }
         super.onViewCreated(view, savedInstanceState)
     }
