@@ -32,7 +32,7 @@
     <string name="title_end_request">Müraciəti bitir</string>
     <string name="label_dizzy">Huşunu itirmə</string>
     <string name="label_fever">Yüksək hərarət</string>
-    <string name="label_heart_stroke">Ürək tutuması</string>
+    <string name="label_heart_stroke">Ürək tutması</string>
     <string name="label_bleeding">Qanaxma</string>
     <string name="label_other">Digər</string>
     <string name="label_enter_reason">Səbəbi daxil edin</string>

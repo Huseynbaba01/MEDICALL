@@ -1,8 +1,10 @@
-package com.creativeprojects.medicall.utils.helper
+package com.creativeprojects.medicall.utils.preferences
 import android.content.Context
 import android.content.SharedPreferences
 
 object PreferenceHelper {
+
+    fun getDefault(context: Context): SharedPreferences = context.getSharedPreferences("DefaultPreferences", Context.MODE_PRIVATE)
 
     fun customPrefs(context: Context, name: String): SharedPreferences
             = context.getSharedPreferences(name, Context.MODE_PRIVATE)
@@ -20,7 +22,7 @@ object PreferenceHelper {
         is Boolean -> edit { it.putBoolean(key, value) }
         is Float -> edit { it.putFloat(key, value) }
         is Long -> edit { it.putLong(key, value) }
-        else -> throw UnsupportedOperationException("Not yet implemented")
+        else -> throw UnsupportedOperationException("Not supported type!")
     }
 
     inline operator fun <reified T : Any> SharedPreferences.get(key: String, defaultValue: T? = null): T

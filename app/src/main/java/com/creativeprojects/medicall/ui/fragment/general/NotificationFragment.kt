@@ -16,6 +16,7 @@ import com.creativeprojects.medicall.network.cloudMessaging.SendingCloudMessage
 import com.creativeprojects.medicall.ui.adapter.NotificationsAdapter
 import com.creativeprojects.medicall.ui.dialog.DeleteMessageDialog
 import com.creativeprojects.medicall.utils.mock.DoAsyncTask
+import com.creativeprojects.medicall.utils.preferences.PreferenceHelper
 import com.google.firebase.messaging.FirebaseMessaging
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -43,12 +44,11 @@ class NotificationFragment : BaseFragment() {
         FirebaseMessaging.getInstance().subscribeToTopic(TOPIC)
         Log.d(TAG, "onCreateView: firstPlace")
 
-        DoAsyncTask {
+       /* DoAsyncTask {
             Log.d(TAG, "onCreateView: secondPlace")
-            assignRecyclerView()
-        }.run()
-
-
+            assignRecyclerView()//TODO Arif, bunu niyə asinxron etməyə çalışırıq ki?
+        }.run()*/
+        assignRecyclerView()
 
         setClickListeners()
 

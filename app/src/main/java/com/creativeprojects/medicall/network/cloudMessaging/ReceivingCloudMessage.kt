@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_ONE_SHOT
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.BitmapFactory.decodeResource
 import android.graphics.Color
 import android.util.Log
@@ -15,8 +16,7 @@ import com.creativeprojects.medicall.database.roomdb.NotificationDatabase
 import com.creativeprojects.medicall.event.SendUniqueItemEvent
 import com.creativeprojects.medicall.model.NotificationModel
 import com.creativeprojects.medicall.ui.activity.MainActivity
-import com.creativeprojects.medicall.ui.fragment.general.NotificationFragment
-import com.creativeprojects.medicall.utils.helper.CommonHelper
+import com.creativeprojects.medicall.utils.preferences.PreferenceHelper
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import org.greenrobot.eventbus.EventBus
@@ -62,7 +62,7 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
             .setSubText(message.data["date"])
             .setAutoCancel(true)
             .setChannelId(channelId)
-            .setSmallIcon(R.drawable.mark_as_read_blue)
+            .setSmallIcon(R.mipmap.ic_launcher)
             .setLargeIcon(message.data["largeIcon"]?.let {
                 decodeResource(this.resources,
                     it.toInt())
