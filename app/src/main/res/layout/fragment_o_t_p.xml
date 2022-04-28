@@ -107,7 +107,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
                             android:inputType="number"
-                            android:maxLength="1"
+                            android:maxLength="2"
                             android:textSize="18sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,7 +133,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:inputType="number"
-                            android:maxLength="1"
+                            android:maxLength="2"
                             android:textSize="18sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,7 +160,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:inputType="number"
-                            android:maxLength="1"
+                            android:maxLength="2"
                             android:textSize="18sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -186,7 +186,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:inputType="number"
-                            android:maxLength="1"
+                            android:maxLength="2"
                             android:textSize="18sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -212,7 +212,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:inputType="number"
-                            android:maxLength="1"
+                            android:maxLength="2"
                             android:textSize="18sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -238,7 +238,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:inputType="number"
-                            android:maxLength="1"
+                            android:maxLength="2"
                             android:textSize="18sp" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>

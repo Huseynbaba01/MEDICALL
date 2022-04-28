@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -19,10 +20,9 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
-class ContinueWithPhoneNumberFragment : BaseFragment() {
+class ContinueWithPhoneNumberFragment : Fragment() {
     lateinit var binding: FragmentContinueWithPhoneNumberBinding
     private lateinit var firebaseAuth: MyFirebase
-    private lateinit var directions: NavDirections
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,7 +40,6 @@ class ContinueWithPhoneNumberFragment : BaseFragment() {
 
         binding.phoneNumber.requestFocus()
         firebaseAuth = MyFirebase(requireActivity())
-        directions=ContinueWithPhoneNumberFragmentDirections.actionContinueWithPhoneNumberFragmentToOTPFragment()
 
         binding.CCP.setOnCountryChangeListener {
             var countryCode="("+binding.CCP.selectedCountryCode+")"
@@ -58,8 +57,9 @@ class ContinueWithPhoneNumberFragment : BaseFragment() {
 
                 binding.pBar.visibility=View.VISIBLE
                 Log.d("MyTagHere", "onViewCreated: phoneNumberInitialized")
-                EventBus.getDefault().postSticky(SendPhoneNumberAndCountryCodeEvent(binding.CCP.selectedCountryNameCode.toString(),"(+"+binding.CCP.selectedCountryCode+")"+binding.phoneNumber.text.toString()))
                 firebaseAuth.sendVerificationCode(binding.countryCode.text.toString(), binding.phoneNumber.text.toString())
+                findNavController().navigate(ContinueWithPhoneNumberFragmentDirections.actionContinueWithPhoneNumberFragmentToOTPFragment(binding.phoneNumber.text.toString(),binding.countryCode.text.toString()))
+                EventBus.getDefault().postSticky(SendPhoneNumberAndCountryCodeEvent(binding.CCP.selectedCountryNameCode.toString(),"(+"+binding.CCP.selectedCountryCode+")"+binding.phoneNumber.text.toString()))
 
 
             }   else{
@@ -71,16 +71,12 @@ class ContinueWithPhoneNumberFragment : BaseFragment() {
 
     }
 
-    public fun startTransformation(){
-
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
-    fun onStartActionToOTPEvent(startActionToOTP: StartActionToOTPEvent){
-        val d = Log.d("MyTagHere", "moveToOTP: MoveToOTP")
-
-        findNavController().navigate(ContinueWithPhoneNumberFragmentDirections.actionContinueWithPhoneNumberFragmentToOTPFragment())
-    }
+//    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+//    fun onStartActionToOTPEvent(startActionToOTP: StartActionToOTPEvent){
+//        Log.d("MyTagHere", "moveToOTP: MoveToOTP")
+//
+//        findNavController().navigate(ContinueWithPhoneNumberFragmentDirections.actionContinueWithPhoneNumberFragmentToOTPFragment("+"+binding.countryCode+binding.phoneNumber))
+//    }
 
 
 

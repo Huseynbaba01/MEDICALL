@@ -22,6 +22,7 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import okhttp3.Response
 import org.greenrobot.eventbus.EventBus
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
@@ -30,18 +31,17 @@ import kotlin.random.Random
 
 
 
-class MyFirebase(activity: Activity) {
+class MyFirebase(var activity: Activity) {
 
 
     private val TAG = "MyTagHere"
-    var activity: Activity = activity
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val fragment: ContinueWithPhoneNumberFragment = ContinueWithPhoneNumberFragment()
 
 
 
     fun sendVerificationCode(countryCode:String,basePhoneNumber:String){
-
+        auth.firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
         val phoneNumber =""+ countryCode + basePhoneNumber
 
         val options = PhoneAuthOptions.newBuilder(auth)
@@ -55,20 +55,15 @@ class MyFirebase(activity: Activity) {
                 }
 
                 override fun onVerificationFailed(p0: FirebaseException) {
-
                     Log.d(TAG, "onVerificationFailed: "+ p0.message)
-
                 }
 
                 override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
-                    EventBus.getDefault().postSticky(StartActionToOTPEvent())
+//                    EventBus.getDefault().postSticky(StartActionToOTPEvent())
                     EventBus.getDefault().postSticky(SendVerificationCodeEvent(p0))
                     super.onCodeSent(p0, p1)
                     Log.d(TAG, "onCodeSent: firstparametr:"+p0+",secondParametr:" + p1.toString())
-
                 }
-
-
             })
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)

@@ -11,8 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavDirections
+import androidx.navigation.fragment.navArgs
 import com.creativeprojects.medicall.databinding.FragmentOTPBinding
 import com.creativeprojects.medicall.event.SendPhoneNumberAndCountryCodeEvent
 import com.creativeprojects.medicall.event.SendVerificationCodeEvent
@@ -33,8 +33,9 @@ class OTPFragment : BaseFragment() {
     lateinit var phoneNumber: String
     lateinit var countryCode: String
     lateinit var firebase: MyFirebase
+    lateinit var timer: CountDownTimer
     lateinit var directions: NavDirections
-
+    private val args: OTPFragmentArgs by navArgs()
     val TAG = "MyTagHere"
 
     override fun onCreateView(
@@ -42,8 +43,11 @@ class OTPFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        countryCode = args.countryCode
+        phoneNumber = args.phoneNumber
         binding = FragmentOTPBinding.inflate(inflater)
         directions = OTPFragmentDirections.actionOTPFragmentToConfirmedFragment()
+        binding.firstEt.requestFocus()
 
         firebase = MyFirebase(requireActivity())
 
@@ -101,7 +105,11 @@ class OTPFragment : BaseFragment() {
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 formattedPhoneNumber = PhoneNumberUtils.formatNumber(phoneNumber, countryCode)
-                Toast.makeText(requireContext(), "Code sent to : $formattedPhoneNumber", Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    requireContext(),
+                    "Code sent to : $formattedPhoneNumber",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
             } else {
                 formattedPhoneNumber = try {
@@ -122,7 +130,7 @@ class OTPFragment : BaseFragment() {
     }
 
     private fun startTimer() {
-        object : CountDownTimer(60000, 1000) {
+        timer = object : CountDownTimer(60000, 1000) {
 
             @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
@@ -157,7 +165,7 @@ class OTPFragment : BaseFragment() {
         return binding.sixthEt
     }
 
-    private fun  searchVerification(myVerificationCode: String) {
+    private fun searchVerification(myVerificationCode: String) {
         Log.d(TAG, "searchVerification: getCredential Section!")
         val credential = PhoneAuthProvider.getCredential(verificationId, myVerificationCode)
         firebase.verifyPhoneNumber(binding.root, credential, directions, this)
@@ -179,37 +187,39 @@ class OTPFragment : BaseFragment() {
 
 
     private fun passFocus() {
-        binding.firstEt.addTextChangedListener(
-            GenericTextWatcher(
-                binding.secondEt,
-                binding.firstEt
+        with(binding) {
+            firstEt.addTextChangedListener(
+                GenericTextWatcher(
+                    secondEt,
+                    firstEt
+                )
             )
-        )
-        binding.secondEt.addTextChangedListener(
-            GenericTextWatcher(
-                binding.thirdEt,
-                binding.firstEt
+            secondEt.addTextChangedListener(
+                GenericTextWatcher(
+                    thirdEt,
+                    firstEt
+                )
             )
-        )
-        binding.thirdEt.addTextChangedListener(
-            GenericTextWatcher(
-                binding.fourthEt,
-                binding.secondEt
+            thirdEt.addTextChangedListener(
+                GenericTextWatcher(
+                    fourthEt,
+                    secondEt
+                )
             )
-        )
-        binding.fourthEt.addTextChangedListener(
-            GenericTextWatcher(
-                binding.fifthEt,
-                binding.thirdEt
+            fourthEt.addTextChangedListener(
+                GenericTextWatcher(
+                    fifthEt,
+                    thirdEt
+                )
             )
-        )
-        binding.fifthEt.addTextChangedListener(
-            GenericTextWatcher(
-                binding.sixthEt,
-                binding.fourthEt
+            fifthEt.addTextChangedListener(
+                GenericTextWatcher(
+                    sixthEt,
+                    fourthEt
+                )
             )
-        )
-        binding.sixthEt.addTextChangedListener(GenericTextWatcher(binding.sixthEt, binding.fifthEt))
+            sixthEt.addTextChangedListener(GenericTextWatcher(sixthEt, fifthEt))
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
@@ -221,16 +231,15 @@ class OTPFragment : BaseFragment() {
     }
 
 
-    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    fun getPhoneNumberAndCountryCode(sendPhoneNumberAndCountryCodeEvent: SendPhoneNumberAndCountryCodeEvent) {
-        Log.d(TAG, "getPhoneNumberAndCountryCode: getPhoneAndCountrySection")
-
-        phoneNumber = sendPhoneNumberAndCountryCodeEvent.phoneNumber
-        countryCode = sendPhoneNumberAndCountryCodeEvent.countryCode
-        Log.d(TAG, "getPhoneNumberAndCountryCode: " + phoneNumber)
-        showPhoneNumberInOTP()
-    }
-
+//    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+//    fun getPhoneNumberAndCountryCode(sendPhoneNumberAndCountryCodeEvent: SendPhoneNumberAndCountryCodeEvent) {
+//        Log.d(TAG, "getPhoneNumberAndCountryCode: getPhoneAndCountrySection")
+//
+//        phoneNumber = sendPhoneNumberAndCountryCodeEvent.phoneNumber
+//        countryCode = sendPhoneNumberAndCountryCodeEvent.countryCode
+//        Log.d(TAG, "getPhoneNumberAndCountryCode: " + phoneNumber)
+//        showPhoneNumberInOTP()
+//    }
 
 
 }
