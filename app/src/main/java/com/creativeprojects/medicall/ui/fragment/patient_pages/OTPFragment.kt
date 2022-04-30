@@ -1,6 +1,7 @@
 package com.creativeprojects.medicall.ui.fragment.patient_pages
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -36,6 +37,7 @@ class OTPFragment : BaseFragment() {
     lateinit var timer: CountDownTimer
     lateinit var directions: NavDirections
     private val args: OTPFragmentArgs by navArgs()
+    private lateinit var mContext: Context
     val TAG = "MyTagHere"
 
     override fun onCreateView(
@@ -48,6 +50,7 @@ class OTPFragment : BaseFragment() {
         binding = FragmentOTPBinding.inflate(inflater)
         directions = OTPFragmentDirections.actionOTPFragmentToConfirmedFragment()
         binding.firstEt.requestFocus()
+        mContext = requireContext()
 
         firebase = MyFirebase(requireActivity())
 
@@ -144,8 +147,7 @@ class OTPFragment : BaseFragment() {
             }
 
             override fun onFinish() {
-                Toast.makeText(requireContext(), "Your time is off!", Toast.LENGTH_LONG).show()
-
+                if(isResumed) Toast.makeText(mContext, "Your time is off!", Toast.LENGTH_LONG).show()
             }
         }.start()
     }
