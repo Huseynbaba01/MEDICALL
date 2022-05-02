@@ -41,7 +41,7 @@ class MyFirebase(var activity: Activity) {
 
 
     fun sendVerificationCode(countryCode:String,basePhoneNumber:String){
-        auth.firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
+//        auth.firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
         val phoneNumber =""+ countryCode + basePhoneNumber
 
         val options = PhoneAuthOptions.newBuilder(auth)
@@ -77,15 +77,10 @@ class MyFirebase(var activity: Activity) {
                     Log.d(TAG, "verifyPhoneNumber: is successful!")
                 } else {
                     Log.d(TAG, "verifyPhoneNumber: sign in is not successful!")
-
                 }
             }
             .addOnFailureListener {
                 Log.d(TAG, "verifyPhoneNumber: it didn't get success!")
             }
-
     }
-
-
-
 }

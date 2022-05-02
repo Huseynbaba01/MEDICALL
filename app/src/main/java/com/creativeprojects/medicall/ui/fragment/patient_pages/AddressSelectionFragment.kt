@@ -194,6 +194,9 @@ class AddressSelectionFragment : BaseFragment(), OnMapReadyCallback,
                 )
             )
         }
+        else{
+            Log.d(TAG, "addToHistoryItems: address is null")
+        }
         binding.btnAuto.isEnabled = true
     }
 

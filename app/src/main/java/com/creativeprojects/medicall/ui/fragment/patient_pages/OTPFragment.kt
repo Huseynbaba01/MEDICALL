@@ -48,6 +48,7 @@ class OTPFragment : BaseFragment() {
         countryCode = args.countryCode
         phoneNumber = args.phoneNumber
         binding = FragmentOTPBinding.inflate(inflater)
+        binding.secondText.text = "Kod +${args.countryCode+args.phoneNumber} nömrəsinə göndərildi"
         directions = OTPFragmentDirections.actionOTPFragmentToConfirmedFragment()
         binding.firstEt.requestFocus()
         mContext = requireContext()
@@ -128,7 +129,7 @@ class OTPFragment : BaseFragment() {
         }
 
 
-        binding.secondText.text = "Kod $formattedPhoneNumber nömrəsinə göndərildi"
+//        binding.secondText.text = "Kod $formattedPhoneNumber nömrəsinə göndərildi"
         Log.d(TAG, "showPhoneNumberInOTP: also that is true!..countryCode:$countryCode")
     }
 
@@ -153,18 +154,17 @@ class OTPFragment : BaseFragment() {
     }
 
     private fun checkEmptiness(): TextInputEditText {
-        if (binding.firstEt.text.isNullOrEmpty())
-            return binding.firstEt
-        else if (binding.secondEt.text.isNullOrEmpty())
-            return binding.secondEt
-        else if (binding.thirdEt.text.isNullOrEmpty())
-            return binding.thirdEt
-        else if (binding.fourthEt.text.isNullOrEmpty())
-            return binding.fourthEt
-        else if (binding.fifthEt.text.isNullOrEmpty())
-            return binding.fifthEt
-        Log.d(TAG, "checkEmpty: all full except 6")
-        return binding.sixthEt
+        return when {
+            binding.firstEt.text.isNullOrEmpty() -> binding.firstEt
+            binding.secondEt.text.isNullOrEmpty() -> binding.secondEt
+            binding.thirdEt.text.isNullOrEmpty() -> binding.thirdEt
+            binding.fourthEt.text.isNullOrEmpty() -> binding.fourthEt
+            binding.fifthEt.text.isNullOrEmpty() -> binding.fifthEt
+            else -> {
+                Log.d(TAG, "checkEmpty: all full except 6")
+                binding.sixthEt
+            }
+        }
     }
 
     private fun searchVerification(myVerificationCode: String) {

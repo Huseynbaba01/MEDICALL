@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -47,42 +48,43 @@
                 android:layout_toLeftOf="@+id/trash"
                 android:background="@drawable/mark_as_read_gray"
                 android:drawableTint="@color/black" />
-            <Button
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/markAsRead"
-                android:id="@+id/forInstance"/>
-
+            <!--
+                        <Button
+                            android:id="@+id/forInstance"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/markAsRead" />
+            -->
         </RelativeLayout>
 
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/myRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/myRecyclerView"
-            android:visibility="visible"/>
+            android:visibility="visible" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/forEmptyPicture"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:gravity="center"
-            android:visibility="gone"
-            android:id="@+id/forEmptyPicture">
+            android:orientation="vertical"
+            android:visibility="gone">
+
             <ImageView
+                android:id="@+id/myImage"
                 android:layout_width="329dp"
                 android:layout_height="329dp"
-                android:id="@+id/myImage"
-                android:background="@drawable/thereisnonotification"/>
+                android:background="@drawable/thereisnonotification" />
 
             <TextView
+                android:id="@+id/thereIsNoNotification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bildiriş yoxdur"
-                android:textSize="16sp"
                 android:textColor="#4F4949"
-                android:id="@+id/thereIsNoNotification"
-                />
+                android:textSize="16sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 

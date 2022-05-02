@@ -24,6 +24,44 @@
         app:borderWidth="0dp"
         app:tint="@null"
         app:useCompatPadding="true" />
+    
+    <androidx.cardview.widget.CardView
+        android:id="@+id/first_aid_card"
+        android:visibility="gone"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="15dp"
+        app:cardCornerRadius="6dp"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:layout_above="@id/bottom_info"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:id="@+id/img_first_aid"
+                android:src="@drawable/ic_first_aid_icon"
+                android:layout_width="34dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:layout_height="30dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="İlk yardım"
+                android:textColor="@color/text_black"
+                android:textSize="10sp"
+                android:layout_marginTop="7dp"
+                android:layout_below="@id/img_first_aid"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <RelativeLayout
         android:id="@+id/bottom_info"

@@ -103,7 +103,7 @@ class IntroFragment : Fragment() {
     }
 
     private fun checkGPSEnabled() {
-        val manager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val manager = requireContext().getSystemService(LOCATION_SERVICE) as LocationManager
         if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER).not()) {
             turnOnGPS()
         }

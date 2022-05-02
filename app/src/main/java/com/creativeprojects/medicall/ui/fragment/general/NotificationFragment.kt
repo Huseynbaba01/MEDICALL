@@ -1,6 +1,8 @@
 package com.creativeprojects.medicall.ui.fragment.general
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -46,11 +48,21 @@ class NotificationFragment : BaseFragment() {
 
        /* DoAsyncTask {
             Log.d(TAG, "onCreateView: secondPlace")
-            assignRecyclerView()//TODO Arif, bunu niyə asinxron etməyə çalışırıq ki?
+            assignRecyclerView()//TODO: Arif, bunu niyə asinxron etməyə çalışırıq ki?
         }.run()*/
         assignRecyclerView()
-
         setClickListeners()
+        Handler(Looper.getMainLooper()).postDelayed(
+            {
+                SendingCloudMessage.sendMessage(
+                    "Warning!",
+                    "Ambulance arrived!",
+                    Calendar.getInstance().timeInMillis.toString(),
+                    R.drawable.ambulance,
+                    TOPIC
+                )
+            }, 300
+        )
 
         return binding.root
     }
@@ -75,7 +87,8 @@ class NotificationFragment : BaseFragment() {
 
         }
 
-
+//        For testing notifications:
+        /*
         binding.forInstance.setOnClickListener(View.OnClickListener {
             SendingCloudMessage.sendMessage(
                 "Warning!",
@@ -84,7 +97,7 @@ class NotificationFragment : BaseFragment() {
                 R.drawable.ambulance,
                 TOPIC
             )
-        })
+        })*/
 
     }
 
