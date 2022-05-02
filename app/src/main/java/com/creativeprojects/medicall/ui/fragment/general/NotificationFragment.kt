@@ -44,10 +44,6 @@ class NotificationFragment : BaseFragment() {
         FirebaseMessaging.getInstance().subscribeToTopic(TOPIC)
         Log.d(TAG, "onCreateView: firstPlace")
 
-       /* DoAsyncTask {
-            Log.d(TAG, "onCreateView: secondPlace")
-            assignRecyclerView()//TODO Arif, bunu niyə asinxron etməyə çalışırıq ki?
-        }.run()*/
         assignRecyclerView()
 
         setClickListeners()
@@ -137,15 +133,14 @@ class NotificationFragment : BaseFragment() {
     }
 
 
-    @Subscribe(threadMode = ThreadMode.ASYNC, sticky = true)
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     fun onUpdateReadHappened(updateReadEvent: UpdateReadEvent) {
-        DoAsyncTask {
             val DAO = NotificationDatabase.getDatabase(requireActivity().application).notificationDao()
-            val position: Int = updateReadEvent.mSize-updateReadEvent.mPosition
-            Log.d(TAG, "onUpdateReadHappened: recyclerPosition:"+position)
-            DAO.updateSingleRead(position, "true")
-        }.run()
+            Log.d(TAG, "onUpdateReadHappened: recyclerPosition:"+updateReadEvent.mPosition)
+            DAO.updateSingleRead(updateReadEvent.mPosition, "true")
+
         checkReads()
+
     }
 
     private fun checkReads() {

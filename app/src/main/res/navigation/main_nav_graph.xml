@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/introFragment">
+    app:startDestination="@id/notificationFragment">
 
     <fragment
         android:id="@+id/introFragment"
@@ -18,6 +18,9 @@
             app:popUpToInclusive="false"
             app:enterAnim="@anim/enter_right_to_left"
             />
+        <action
+            android:id="@+id/action_introFragment_to_connectionError"
+            app:destination="@id/connectionError" />
     </fragment>
     <fragment
         android:id="@+id/selectUserTypeFragment"
@@ -129,4 +132,13 @@
         android:name="com.creativeprojects.medicall.ui.activity.DoctorMainActivity"
         android:label="doctor_main_a2ctivity"
         tools:layout="@layout/activity_doctor_main"/>
+    <fragment
+        android:id="@+id/connectionError"
+        android:name="com.creativeprojects.medicall.ui.fragment.general.ConnectionError"
+        android:label="fragment_connection_error"
+        tools:layout="@layout/fragment_connection_error" >
+        <action
+            android:id="@+id/action_connectionError_to_introFragment"
+            app:destination="@id/introFragment" />
+    </fragment>
 </navigation>

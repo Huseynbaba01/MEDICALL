@@ -1,6 +1,5 @@
 package com.creativeprojects.medicall.event
 
-class UpdateReadEvent(position:Int,size:Int) {
+class UpdateReadEvent(position:Int) {
     val mPosition:Int = position
-    val mSize:Int = size
 }

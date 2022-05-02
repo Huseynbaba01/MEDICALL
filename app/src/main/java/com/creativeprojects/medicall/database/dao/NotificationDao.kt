@@ -14,14 +14,13 @@ interface NotificationDao {
     fun getAllNotificationData():List<NotificationModel>
 
 
-    @Query("DELETE  FROM notification_table")
+    @Query("DELETE FROM notification_table")
     fun deleteAllNotifications()
 
     @Query("Update notification_table set read=:condition")
     fun updateAllRead(condition:String)
 
 
-    //TODO do not asset read to true
     @Query("Update notification_table set read=:condition where id=:position")
     fun updateSingleRead(position:Int,condition:String)
 
@@ -29,6 +28,9 @@ interface NotificationDao {
 
     @Query("Select read from notification_table where read=:condition")
     fun getNumberOfUnreadNotification(condition:String):List<String>
+
+
+
 
 
 
