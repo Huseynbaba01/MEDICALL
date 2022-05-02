@@ -69,6 +69,8 @@ class OTPFragment : BaseFragment() {
             activity?.onBackPressed()
         }
 
+        onDeleteClicked()
+
 
         binding.idYenidenGonder.setOnClickListener(View.OnClickListener {
             Log.d(TAG, "onCreateView: yeniden gonder Clicked")
@@ -80,6 +82,10 @@ class OTPFragment : BaseFragment() {
         })
 
         return binding.root
+    }
+
+    private fun onDeleteClicked() {
+        //TODO return previous edit text on delete key pushed if current is empty
     }
 
     private fun clearOTPs() {
@@ -181,35 +187,45 @@ class OTPFragment : BaseFragment() {
     private fun passFocus() {
         binding.firstEt.addTextChangedListener(
             GenericTextWatcher(
-                binding.secondEt,
-                binding.firstEt
+                binding.firstEt,
+                binding.firstEt,
+                binding.secondEt
             )
         )
         binding.secondEt.addTextChangedListener(
             GenericTextWatcher(
-                binding.thirdEt,
-                binding.firstEt
+                binding.firstEt,
+                binding.secondEt,
+                binding.thirdEt
             )
         )
         binding.thirdEt.addTextChangedListener(
             GenericTextWatcher(
-                binding.fourthEt,
-                binding.secondEt
+                binding.secondEt,
+                binding.thirdEt,
+                binding.fourthEt
             )
         )
         binding.fourthEt.addTextChangedListener(
             GenericTextWatcher(
-                binding.fifthEt,
-                binding.thirdEt
+                binding.thirdEt,
+                binding.fourthEt,
+                binding.fifthEt
             )
         )
         binding.fifthEt.addTextChangedListener(
             GenericTextWatcher(
-                binding.sixthEt,
-                binding.fourthEt
+                binding.fourthEt,
+                binding.fifthEt,
+                binding.sixthEt
             )
         )
-        binding.sixthEt.addTextChangedListener(GenericTextWatcher(binding.sixthEt, binding.fifthEt))
+        binding.sixthEt.addTextChangedListener(
+            GenericTextWatcher(
+                binding.fifthEt,
+                binding.sixthEt,
+                binding.sixthEt
+            ))
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
@@ -223,11 +239,11 @@ class OTPFragment : BaseFragment() {
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     fun getPhoneNumberAndCountryCode(sendPhoneNumberAndCountryCodeEvent: SendPhoneNumberAndCountryCodeEvent) {
-        Log.d(TAG, "getPhoneNumberAndCountryCode: getPhoneAndCountrySection")
+//        Log.d(TAG, "getPhoneNumberAndCountryCode: getPhoneAndCountrySection")
 
         phoneNumber = sendPhoneNumberAndCountryCodeEvent.phoneNumber
         countryCode = sendPhoneNumberAndCountryCodeEvent.countryCode
-        Log.d(TAG, "getPhoneNumberAndCountryCode: " + phoneNumber)
+//        Log.d(TAG, "getPhoneNumberAndCountryCode: $phoneNumber")
         showPhoneNumberInOTP()
     }
 

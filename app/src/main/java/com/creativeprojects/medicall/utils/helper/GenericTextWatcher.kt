@@ -5,10 +5,8 @@ import android.text.TextWatcher
 import android.util.Log
 import com.google.android.material.textfield.TextInputEditText
 
-class GenericTextWatcher(etNext : TextInputEditText,etPrev : TextInputEditText) : TextWatcher {
-    var etNext=etNext
-    var etPrev=etPrev
-    val TAG="MyTagHere"
+class GenericTextWatcher(private val etPrev : TextInputEditText,private val etSelf:TextInputEditText, private val etNext : TextInputEditText) : TextWatcher {
+    private val TAG="MyTagHere"
 
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
     }
@@ -20,7 +18,11 @@ class GenericTextWatcher(etNext : TextInputEditText,etPrev : TextInputEditText) 
         if(p0.toString().length == 1){
             Log.d(TAG, "afterTextChanged: changeTheText")
             etNext.requestFocus()
-        }else{
+        }else if(p0.toString().length == 2){
+            etSelf.setText(p0.toString()[0].toString())
+            etNext.setText(p0.toString()[1].toString())
+        }
+        else{
             Log.d(TAG, "afterTextChanged: Don't change the text!")
             etPrev.requestFocus()
         }

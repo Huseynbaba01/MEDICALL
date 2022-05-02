@@ -135,9 +135,9 @@ class NotificationFragment : BaseFragment() {
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     fun onUpdateReadHappened(updateReadEvent: UpdateReadEvent) {
-            val DAO = NotificationDatabase.getDatabase(requireActivity().application).notificationDao()
-            Log.d(TAG, "onUpdateReadHappened: recyclerPosition:"+updateReadEvent.mPosition)
-            DAO.updateSingleRead(updateReadEvent.mPosition, "true")
+        val DAO = NotificationDatabase.getDatabase(requireActivity().application).notificationDao()
+        Log.d(TAG, "onUpdateReadHappened: recyclerPosition:"+updateReadEvent.mPosition)
+        DAO.updateSingleRead(updateReadEvent.mPosition, "true")
 
         checkReads()
 

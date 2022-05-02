@@ -77,7 +77,7 @@ class ContinueWithPhoneNumberFragment : BaseFragment() {
 
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     fun onStartActionToOTPEvent(startActionToOTP: StartActionToOTPEvent){
-        val d = Log.d("MyTagHere", "moveToOTP: MoveToOTP")
+        Log.d("MyTagHere", "moveToOTP: MoveToOTP")
 
         findNavController().navigate(ContinueWithPhoneNumberFragmentDirections.actionContinueWithPhoneNumberFragmentToOTPFragment())
     }

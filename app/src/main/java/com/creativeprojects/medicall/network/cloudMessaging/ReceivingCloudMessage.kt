@@ -16,6 +16,7 @@ import com.creativeprojects.medicall.database.roomdb.NotificationDatabase
 import com.creativeprojects.medicall.event.SendUniqueItemEvent
 import com.creativeprojects.medicall.model.NotificationModel
 import com.creativeprojects.medicall.ui.activity.MainActivity
+import com.creativeprojects.medicall.ui.fragment.general.NotificationFragment
 import com.creativeprojects.medicall.utils.preferences.PreferenceHelper
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -39,7 +40,7 @@ class ReceivingCloudMessage: FirebaseMessagingService() {
         super.onMessageReceived(message)
         Log.d(TAG, "onMessageReceived: MessageReceived")
 
-        val intent = Intent(applicationContext, MainActivity::class.java)
+        val intent = Intent(applicationContext, NotificationFragment::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP )
         val pendingIntent = PendingIntent.getActivity(this,0,intent, FLAG_ONE_SHOT)
 
