@@ -69,7 +69,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
                 if(notificationList.get(mPosition).getRead().equals("false")) {
 //                    holder.isRead.setVisibility(View.GONE);
                     holder.isRead.setBackground(AppCompatResources.getDrawable(mContext,R.drawable.mark_as_read_blue));
-                    EventBus.getDefault().postSticky(new UpdateReadEvent(mPosition,notificationList.size()));
+                    EventBus.getDefault().postSticky(new UpdateReadEvent(notificationList.get(mPosition).getId()));
                 }
 
 
