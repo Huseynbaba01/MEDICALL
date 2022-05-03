@@ -45,9 +45,9 @@ class OTPFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding = FragmentOTPBinding.inflate(inflater)
         countryCode = args.countryCode
         phoneNumber = args.phoneNumber
-        binding = FragmentOTPBinding.inflate(inflater)
         binding.secondText.text = "Kod +${args.countryCode+args.phoneNumber} nömrəsinə göndərildi"
         directions = OTPFragmentDirections.actionOTPFragmentToConfirmedFragment()
         binding.firstEt.requestFocus()
@@ -227,7 +227,7 @@ class OTPFragment : BaseFragment() {
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     fun onVerificationCodeSent(sendVerificationCodeEvent: SendVerificationCodeEvent) {
         verificationId = sendVerificationCodeEvent.verificationId
-
+        binding.confirmButton.isEnabled = true
 
         Log.d(TAG, "onVerificationCodeSent: verificationCode:$verificationId")
     }

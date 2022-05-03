@@ -298,6 +298,7 @@
             android:backgroundTint="@color/main_blue"
             android:fontFamily="@font/poppins_medium"
             android:padding="10dp"
+            android:enabled="false"
             android:text="Təsdiqlə"
             android:textAllCaps="false"
             android:textSize="20sp"
